@@ -8,7 +8,9 @@
     "dp_threshold_table": "dp_threshold_table.csv",
     "geometry_sweep_table": "microtubule_geometry_sweep.csv",
     "or_decoherence_comparison_table": "or_decoherence_comparison.csv",
-    "timing_statistics_table": "timing_statistics_table.csv"
+    "time_crystal_multiscale_table": "time_crystal_multiscale.csv",
+    "timing_statistics_table": "timing_statistics_table.csv",
+    "trp_superradiance_table": "trp_superradiance_table.csv"
   },
   "claim_boundary": "Diagnostic timing audit only; toy rows are not biological or ontological claims.",
   "coherence_fraction_grid": [
@@ -37,6 +39,8 @@
     "or_window_open": 2
   },
   "temperature_sweep_rows": 15,
+  "time_crystal_rows": 4,
   "timing_statistics_rows": 9,
-  "timing_statistics_spread": 0.25
+  "timing_statistics_spread": 0.25,
+  "trp_rows": 20
 }

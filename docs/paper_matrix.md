@@ -15,6 +15,9 @@ This matrix records what survives a first-pass reading of the primary papers as 
 - [Zadeh-Haghighi & Simon 2021](https://arxiv.org/abs/2109.14055)
 - [Gassab & Craddock 2026](https://arxiv.org/abs/2604.18604)
 - [Gassab, Pusuluk & Craddock 2026](https://arxiv.org/abs/2602.02868)
+- [Babcock et al. 2024](https://arxiv.org/abs/2302.01469)
+- [Patwa, Babcock & Kurian 2024](https://arxiv.org/abs/2406.15403)
+- [Celardo et al. 2018](https://arxiv.org/abs/1809.03438)
 
 ## Survival Matrix
 
@@ -31,6 +34,7 @@ This matrix records what survives a first-pass reading of the primary papers as 
 | Radical-pair adjacency | Magnetic fields can influence microtubule organization via radical-pair dynamics | `contested_support` | Useful as an adjacent quantum-spin-sensitive mechanism, not an Orch-OR proof. |
 | Tunable microtubule fluorescence | Polymerization and added tryptophan modulate microtubule fluorescence yield | `supported_microphysics` | Stronger support for chemically addressable microtubule photophysics. |
 | Nonclassical correlation flow | Structured tryptophan networks can route and preserve correlations transiently | `supported_microphysics` | Good for information-flow diagnostics, not consciousness claims. |
+| Trp superradiance scale-up | Yield and subradiant retention vary with network size and disorder | `supported_microphysics` | Useful for bounded optical-channel diagnostics. |
 | Consciousness from Orch-OR | Conscious experience arises from microtubule OR events | `unproven_interpretation` | Keep as the model claim, clearly labeled. |
 | Anesthetic mechanism | Anesthetics quench tubulin coherence as the direct cause of unconsciousness | `unproven_interpretation` | The repo should treat this as a hypothesis awaiting discriminating tests. |
 

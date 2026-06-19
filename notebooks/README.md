@@ -22,6 +22,11 @@ Executable notebook path:
    - sweep kHz to THz modes and beat-frequency proxies
    - keep the source placeholders explicit until the primary citations are locked
 
+5. `05_trp_superradiance.ipynb`
+   - sweep tryptophan network size and disorder
+   - track bounded quantum-yield, superradiant gain, and anesthetic damping proxies
+   - keep the source placeholders explicit until the primary citations are locked
+
 Comparison note:
 - `docs/published_values.md`
   - summarizes how the frozen outputs line up with the cited paper ranges

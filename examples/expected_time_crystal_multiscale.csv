@@ -1,0 +1,5 @@
+mode_label,base_frequency_hz,amplitude,phase_rad,damping,coherence_time_s,beat_frequency_hz,collapse_probability,source_ids,note
+kHz,1.000000e+03,1.000000e+00,0.000000e+00,5.000000e-02,2.000000e+01,0.000000e+00,0.000000e+00,hameroff_time_crystal_2026;bandyopadhyay_multiscale_resonance,Diagnostic multiscale oscillation ladder; not a biological proof.
+MHz,1.000000e+06,8.000000e-01,6.000000e-01,1.000000e-01,1.000000e+01,9.990000e+05,1.264343e-01,hameroff_time_crystal_2026;bandyopadhyay_multiscale_resonance,Diagnostic multiscale oscillation ladder; not a biological proof.
+GHz,1.000000e+09,6.000000e-01,1.000000e+00,2.500000e-01,4.000000e+00,9.999990e+08,2.148078e-01,hameroff_time_crystal_2026;bandyopadhyay_multiscale_resonance,Diagnostic multiscale oscillation ladder; not a biological proof.
+THz,1.000000e+12,4.000000e-01,1.300000e+00,5.000000e-01,2.000000e+00,1.000000e+12,1.777138e-01,hameroff_time_crystal_2026;bandyopadhyay_multiscale_resonance,Diagnostic multiscale oscillation ladder; not a biological proof.

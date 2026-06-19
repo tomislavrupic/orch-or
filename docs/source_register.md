@@ -117,6 +117,30 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - Used for: coherence/coherence-routing diagnostics in tryptophan networks.
 - Boundary: Supports nonclassical correlation flow in cytoskeletal chromophore networks, not Orch-OR validation.
 
+## `tryptophan_superradiance_2024`
+
+- Status: `supported_microphysics`
+- Source: N. S. Babcock et al., "Ultraviolet Superradiance from Mega-Networks of Tryptophan in Biological Architectures" (2024)
+- URL: https://arxiv.org/abs/2302.01469
+- Used for: quantum-yield and superradiance diagnostics for tryptophan mega-networks.
+- Boundary: Supports microtubule photophysics, not consciousness.
+
+## `photoprotection_architectures_2024`
+
+- Status: `supported_microphysics`
+- Source: Hamza Patwa, Nathan S. Babcock, Philip Kurian, "Quantum-enhanced photoprotection in neuroprotein architectures emerges from collective light-matter interactions" (2024)
+- URL: https://arxiv.org/abs/2406.15403
+- Used for: quantum-yield scaling and disorder robustness diagnostics for neuroprotein architectures.
+- Boundary: Supports photoprotection/optical robustness diagnostics, not consciousness.
+
+## `superradiant_excitonic_states_2018`
+
+- Status: `supported_microphysics`
+- Source: G. L. Celardo, M. Angeli, P. Kurian, T. J. A. Craddock, "On the existence of superradiant excitonic states in microtubules" (2018)
+- URL: https://arxiv.org/abs/1809.03438
+- Used for: superradiant and supertransfer diagnostics for tryptophan chromophore lattices.
+- Boundary: Supports optical transport diagnostics, not Orch-OR validation.
+
 ## `hameroff_time_crystal_2026`
 
 - Status: `model_assumption`

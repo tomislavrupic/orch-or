@@ -18,6 +18,7 @@ This file tracks sources that must be traced before toy values become public sci
 6. Anesthesia perturbation models relevant to tubulin or microtubule dynamics.
 7. Primary structural references for the microtubule lattice and alpha/beta tubulin dimer.
 8. Time-crystal and multiscale microtubule oscillation references linked to the current Hameroff emphasis.
+9. Tryptophan superradiance, photoprotection, and microtubule quantum optical channel references.
 
 ## Strong Candidate Primary Structural Sources
 
@@ -34,6 +35,14 @@ These are placeholders for the current time-crystal/multiscale oscillation works
 - Hameroff 2026 time-crystal paper referenced in current discussions.
 - Bandyopadhyay experimental microtubule resonance work referenced in current discussions.
 
+## Tryptophan / Optical Channel Source Targets
+
+These are placeholders for the current Trp optical-channel workstream until the primary citations are locked:
+
+- Babcock et al. 2024 superradiance paper on tryptophan mega-networks.
+- Patwa, Babcock, Kurian 2024 photoprotection paper on neuroprotein architectures.
+- Celardo, Angeli, Kurian, Craddock 2018 superradiant excitonic states in microtubules.
+
 ## Currently Wired Source IDs
 
 - `diosi_2021_collapse_rate`: traced enough for the DP/OR rate and self-energy-excess formula.
@@ -44,6 +53,7 @@ These are placeholders for the current time-crystal/multiscale oscillation works
 - `microtubule_structure_nogales_1998`, `microtubule_lattice_nogales_1999`, `tubulin_atomic_lowe_2001`: literature pending; use for geometry upgrades once metadata is locked.
 - `anesthesia_counterfactual_untraced`: model assumption only.
 - `hameroff_time_crystal_2026`, `bandyopadhyay_multiscale_resonance`: model assumptions tied to the current notebook roadmap; keep as placeholders until the primary papers are locked.
+- `tryptophan_superradiance_2024`, `photoprotection_architectures_2024`, `superradiant_excitonic_states_2018`: supported-microphysics source rows for the Trp optical-channel layer; keep the citation trail explicit until the repo has direct traces for the exact publication metadata.
 
 See `docs/source_register.md` for URLs and usage boundaries.
 

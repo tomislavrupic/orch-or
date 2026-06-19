@@ -12,6 +12,7 @@ It is a cross-check, not a claim of biological validity.
 | Water/MAP protection proxy | `1e-4` to `1e-1` s | `decoherence_estimate_table.csv` | `water_map_protection_proxy` | Model-assumption row for slower protective damping. |
 | Temperature sweep | `280 K` / `310 K` / `350 K` | `temperature_decoherence_sweep.csv` | `temperature_sweep_rows()` | Deterministic temperature-sensitivity harness for the same decoherence estimates. |
 | Microtubule transport | `~6.6 nm` diffusion length | `or_decoherence_comparison.csv` | Geometry-vs-decoherence no OR-favorable islands in current band | Transport is supported, but it does not rescue the current OR timing band. |
+| Trp superradiance | `15.7%` to `19.5%` quantum yield | `trp_superradiance_table.csv` | `tryptophan_network_rows()` | Deterministic Trp-network yield and damping proxy harness. |
 | UV superradiance | `15.7%` to `19.5%` quantum yield | `paper_matrix.md` | `supported_microphysics` row | Supports photophysics, not consciousness. |
 | Anesthetic perturbation | Collective oscillation / transport reduction | `anesthesia_prediction_table.csv` | Frequency-aware perturbation rows | The repo treats this as a bounded diagnostic only. |
 | Timing statistics | Deterministic spread around `tau = 2.5e-2 s` | `timing_statistics_table.csv` | 9 fixed spread samples | This is a pseudo-Monte Carlo harness for reproducible timing sensitivity. |

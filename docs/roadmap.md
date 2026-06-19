@@ -11,6 +11,7 @@ This roadmap keeps the repo small, public, and falsifiable.
 5. Add [paper_matrix.md](paper_matrix.md) and [discriminating_tests.md](discriminating_tests.md) links prominently in the README.
 6. Extend the geometry layer with `E_G` model switches and coherent-domain sweeps over `N`, `d`, and protofilament count.
 7. Add the time-crystal / multiscale oscillation notebook and keep the Hameroff/Bandyopadhyay source placeholders explicit until the primary citations are locked.
+8. Add the Trp superradiance / optical channel notebook and keep the Babcock/Kurian and photoprotection source trail explicit.
 
 ## Next
 
