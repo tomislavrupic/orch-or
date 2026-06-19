@@ -42,13 +42,37 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - Used for: approximate tubulin dimer mass and 13-protofilament structural defaults.
 - Boundary: Replace with primary structural reviews before promoting these rows to `literature_traced`.
 
+## `microtubule_structure_nogales_1998`
+
+- Status: `literature_pending`
+- Source: E. Nogales, S. G. Wolf, K. H. Downing, "Structure of the alpha beta tubulin dimer by electron crystallography" (Nature, 1998)
+- URL: https://www.nature.com/articles/391199a0
+- Used for: atomic tubulin-dimer geometry and mass-distribution upgrades.
+- Boundary: Primary title and journal trace are in place; promote only after DOI/page metadata is fully locked.
+
+## `microtubule_lattice_nogales_1999`
+
+- Status: `literature_pending`
+- Source: E. Nogales, M. Whittaker, R. A. Milligan, K. H. Downing, "High-resolution model of the microtubule" (Cell, 1999)
+- URL: https://www.cell.com/cell/fulltext/S0092-8674(00)80712-3
+- Used for: 13-protofilament lattice organization and cylinder approximations.
+- Boundary: Primary lattice reference, not a validated executable parameter set yet.
+
+## `tubulin_atomic_lowe_2001`
+
+- Status: `literature_pending`
+- Source: J. Lowe, H. Li, K. H. Downing, E. Nogales, "Refined structure of alpha beta-tubulin at 3.5 A resolution" (Journal of Molecular Biology, 2001)
+- URL: https://doi.org/10.1016/S0022-2836(01)00989-8
+- Used for: higher-resolution tubulin coordinates and Gaussian-smearing choices.
+- Boundary: Use for geometry tightening once the article metadata is fully locked.
+
 ## `microtubule_primary_trace_pending`
 
-- Status: `pending_primary_trace`
-- Source: Primary structural review candidates include Nogales et al. 1998, Nogales et al. 1999, and Lowe et al. 2001
-- URL: not yet traced
-- Used for: eventual replacement of the secondary structural summary.
-- Boundary: Keep the current executable defaults bounded until this row is promoted.
+- Status: `retired_placeholder`
+- Source: retired placeholder, replaced by the three traced primary candidates above
+- URL: not applicable
+- Used for: historical note only.
+- Boundary: Do not use this row for new executable defaults.
 
 ## `anesthesia_counterfactual_untraced`
 

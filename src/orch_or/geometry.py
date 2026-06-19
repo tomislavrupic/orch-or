@@ -13,6 +13,20 @@ from orch_or.collapse import (
     dp_gaussian_self_energy_excess_j,
     dp_point_mass_far_field_self_energy_j,
 )
+
+FIELDNAMES = [
+    "assumption_label",
+    "eg_model",
+    "coherent_dimers",
+    "separation_m",
+    "smearing_radius_m",
+    "total_dimers",
+    "geometry_outer_diameter_m",
+    "geometry_mass_density_kg_m3",
+    "eg_j",
+    "tau_s",
+    "source_ids",
+]
 from orch_or.constants import TUBULIN_DIMER_MASS_KG
 
 
@@ -136,3 +150,44 @@ def collapse_time_for_domain(
     else:
         raise ValueError(f"unknown eg_model {eg_model!r}")
     return eg, collapse_time_s(eg)
+
+
+def geometry_sweep_rows(
+    geometry: MicrotubuleGeometry,
+    coherent_dimers_grid: tuple[int, ...],
+    separation_grid_m: tuple[float, ...],
+    smearing_radius_m: float,
+    eg_model: str,
+    source_ids: tuple[str, ...],
+    assumption_label: str,
+) -> list[dict[str, str]]:
+    if not coherent_dimers_grid:
+        raise ValueError("coherent_dimers_grid must not be empty")
+    if not separation_grid_m:
+        raise ValueError("separation_grid_m must not be empty")
+    rows: list[dict[str, str]] = []
+    for coherent_dimers in coherent_dimers_grid:
+        for separation_m in separation_grid_m:
+            eg_j, tau_s = collapse_time_for_domain(
+                geometry=geometry,
+                coherent_dimers=coherent_dimers,
+                separation_m=separation_m,
+                smearing_radius_m=smearing_radius_m,
+                eg_model=eg_model,
+            )
+            rows.append(
+                {
+                    "assumption_label": assumption_label,
+                    "eg_model": eg_model,
+                    "coherent_dimers": str(coherent_dimers),
+                    "separation_m": f"{separation_m:.6e}",
+                    "smearing_radius_m": f"{smearing_radius_m:.6e}",
+                    "total_dimers": str(geometry.total_dimers),
+                    "geometry_outer_diameter_m": f"{geometry.outer_diameter_m:.6e}",
+                    "geometry_mass_density_kg_m3": f"{geometry.mass_density_kg_m3:.6e}",
+                    "eg_j": f"{eg_j:.6e}",
+                    "tau_s": f"{tau_s:.6e}",
+                    "source_ids": ";".join(source_ids),
+                }
+            )
+    return rows

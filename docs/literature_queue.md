@@ -16,6 +16,7 @@ This file tracks sources that must be traced before toy values become public sci
 4. Hagan-Hameroff-Tuszynski responses and alternative decoherence estimates.
 5. Contemporary microtubule/tubulin structural parameter references.
 6. Anesthesia perturbation models relevant to tubulin or microtubule dynamics.
+7. Primary structural references for the microtubule lattice and alpha/beta tubulin dimer.
 
 ## Strong Candidate Primary Structural Sources
 
@@ -32,6 +33,7 @@ These are the next primary sources to trace directly if we want to retire the `m
 - `hagan_2000_decoherence_reply`: traced enough for the supportive/contested decoherence ranges.
 - `craddock_2017_anesthetic_thz`: traced enough for direction-of-effect anesthesia perturbation predictions.
 - `microtubule_structure_secondary`: secondary only; replace before treating tubulin geometry as literature-traced.
+- `microtubule_structure_nogales_1998`, `microtubule_lattice_nogales_1999`, `tubulin_atomic_lowe_2001`: literature pending; use for geometry upgrades once metadata is locked.
 - `anesthesia_counterfactual_untraced`: model assumption only.
 
 See `docs/source_register.md` for URLs and usage boundaries.

@@ -11,6 +11,7 @@
   "decoherence_rows": 12,
   "dp_threshold_rows": 12,
   "generated_at_utc": "FROZEN",
+  "geometry_sweep_rows": 15,
   "haos_import_hint": {
     "collapse_definition": "loss of timing-window recoverability under perturbation",
     "metric": "timing_margin_log10",
