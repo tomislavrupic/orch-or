@@ -1,0 +1,4 @@
+parameter_set,scope,coherent_units,unit_self_energy_j,coupling,total_self_energy_j,collapse_time_s,decoherence_time_s,timing_margin_log10,status
+toy_low_energy,toy,1000,1.000000e-34,1.000000e+00,1.000000e-31,1.054572e-03,1.000000e-06,-3.023076,decoherence_preempts_or
+toy_mid_energy,toy,1000000,1.000000e-32,1.000000e+00,1.000000e-26,1.054572e-08,1.000000e-06,1.976924,or_window_open
+toy_high_energy,toy,1000000000,1.000000e-30,1.000000e+00,1.000000e-21,1.054572e-13,1.000000e-06,6.976924,or_window_open

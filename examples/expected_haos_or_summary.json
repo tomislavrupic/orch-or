@@ -1,0 +1,24 @@
+{
+  "anesthesia_prediction_rows": 3,
+  "artifact_kind": "haos_or_timing_ladder_v0",
+  "artifact_tables": {
+    "anesthesia_prediction_table": "anesthesia_prediction_table.csv",
+    "collapse_time_table": "collapse_time_table.csv",
+    "decoherence_estimate_table": "decoherence_estimate_table.csv",
+    "dp_threshold_table": "dp_threshold_table.csv"
+  },
+  "claim_boundary": "Diagnostic timing audit only; toy rows are not biological or ontological claims.",
+  "decoherence_rows": 12,
+  "dp_threshold_rows": 12,
+  "generated_at_utc": "FROZEN",
+  "haos_import_hint": {
+    "collapse_definition": "loss of timing-window recoverability under perturbation",
+    "metric": "timing_margin_log10",
+    "perturbation_axis": "self_energy_or_decoherence_time"
+  },
+  "row_count": 3,
+  "status_counts": {
+    "decoherence_preempts_or": 1,
+    "or_window_open": 2
+  }
+}

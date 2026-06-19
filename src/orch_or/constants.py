@@ -1,0 +1,6 @@
+"""Physical constants used by the timing diagnostics."""
+
+HBAR_J_S = 1.054571817e-34
+GRAVITATIONAL_CONSTANT_M3_KG_S2 = 6.67430e-11
+DALTON_KG = 1.66053906660e-27
+TUBULIN_DIMER_MASS_KG = 110_000.0 * DALTON_KG
