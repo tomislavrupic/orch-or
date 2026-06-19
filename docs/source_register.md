@@ -57,3 +57,27 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - URL: literature queue in this repo
 - Used for: executable microtubule-stabilizer rescue prediction placeholder.
 - Boundary: Not evidence. It is a hypothesis row waiting for source tracing.
+
+## `radical_pair_microtubule_reorganization`
+
+- Status: `contested_support`
+- Source: Hadi Zadeh-Haghighi, Christoph Simon, "Radical pairs may play a role in microtubule reorganization" (2021)
+- URL: https://arxiv.org/abs/2109.14055
+- Used for: magnetic-field-sensitive radical-pair mechanism as a possible adjacent explanation for microtubule organization.
+- Boundary: Does not validate Orch-OR; it only supports a quantum-spin-sensitive adjacent mechanism.
+
+## `microtubule_optical_response_2026`
+
+- Status: `supported_microphysics`
+- Source: Lea Gassab, Travis J. A. Craddock, "Engineering quantum optical responses of microtubules through tryptophan-network simulations and ultraviolet spectroscopy" (2026)
+- URL: https://arxiv.org/abs/2604.18604
+- Used for: tunable microtubule fluorescence, polymerization-sensitive yield, tryptophan quenching.
+- Boundary: Supports microtubule photophysics, not consciousness.
+
+## `microtubule_information_flow_2026`
+
+- Status: `supported_microphysics`
+- Source: Lea Gassab, Onur Pusuluk, Travis J. A. Craddock, "Quantum Information Flow in Microtubule Tryptophan Networks" (2026)
+- URL: https://arxiv.org/abs/2602.02868
+- Used for: coherence/coherence-routing diagnostics in tryptophan networks.
+- Boundary: Supports nonclassical correlation flow in cytoskeletal chromophore networks, not Orch-OR validation.

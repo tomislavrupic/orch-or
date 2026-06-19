@@ -22,6 +22,7 @@ class PaperMatrixTests(unittest.TestCase):
         self.assertIn("unproven_interpretation", text)
         self.assertIn("supported_structure", text)
         self.assertIn("supported_network_biology", text)
+        self.assertIn("contested_support", text)
 
     def test_discriminating_tests_exist(self) -> None:
         text = (ROOT / "docs" / "discriminating_tests.md").read_text(encoding="utf-8")
