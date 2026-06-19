@@ -13,6 +13,7 @@ from orch_or.geometry import (
     compute_eg_diosi_regularized,
     compute_eg_quadrature_validation,
     compute_eg_uniform_cylinder,
+    compute_eg_uniform_sphere,
     gaussian_smearing_radius_from_cloud,
 )
 
@@ -34,12 +35,15 @@ class GeometryTests(unittest.TestCase):
     def test_eg_models_diverge(self) -> None:
         gaussian = compute_eg_gaussian_pair(DEFAULT_GEOMETRY, 13, 1.0e-9, 1.0e-9)
         cylinder = compute_eg_uniform_cylinder(DEFAULT_GEOMETRY, 13, 1.0e-9)
+        sphere = compute_eg_uniform_sphere(DEFAULT_GEOMETRY, 13, 1.0e-9)
         quadrature = compute_eg_quadrature_validation(DEFAULT_GEOMETRY, 13, 1.0e-9)
         diosi = compute_eg_diosi_regularized(DEFAULT_GEOMETRY, 13, 1.0e-9, 1.0e-9)
         self.assertNotEqual(gaussian, cylinder)
+        self.assertNotEqual(cylinder, sphere)
         self.assertNotEqual(cylinder, quadrature)
         self.assertGreater(gaussian, 0.0)
         self.assertGreater(cylinder, 0.0)
+        self.assertGreater(sphere, 0.0)
         self.assertGreater(quadrature, 0.0)
         self.assertGreater(diosi, 0.0)
         self.assertLessEqual(diosi, gaussian)

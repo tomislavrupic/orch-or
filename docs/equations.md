@@ -38,6 +38,16 @@ E_delta ~= G m^2 d^2 / (12 sqrt(pi) R0^3)
 
 This prevents numerical cancellation. It does not make the regulator biologically correct.
 
+## Uniform Sphere / Cylinder Comparison Proxies
+
+For coarse geometry comparisons, the repo also offers bounded far-field proxies that use an equivalent sphere or cylinder scale in place of the Gaussian regulator. These are comparison models only:
+
+```text
+E_G ~ G m^2 / d
+```
+
+with the separation clamped to a geometry scale such as the outer diameter or twice the equivalent radius. They are useful for sensitivity checks, not as a substitute for the regulated model.
+
 ## Coordinate-Cloud Smearing Proxy
 
 For a finite set of atomic-style coordinates `x_i` with masses `m_i`, the notebook-friendly proxy uses:

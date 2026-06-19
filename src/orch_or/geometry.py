@@ -184,6 +184,27 @@ def compute_eg_uniform_cylinder(
     return dp_point_mass_far_field_self_energy_j(mass, max(separation_m, geometry.outer_diameter_m))
 
 
+def compute_eg_uniform_sphere(
+    geometry: MicrotubuleGeometry,
+    coherent_dimers: int,
+    separation_m: float,
+) -> float:
+    """Return a uniform-sphere far-field diagnostic proxy.
+
+    This is a deliberately coarse comparison model. It uses the equivalent
+    sphere radius for the coherent mass domain and the same point-mass
+    far-field interaction scale as a bounded surrogate.
+    """
+
+    if coherent_dimers <= 0:
+        raise ValueError("coherent_dimers must be positive")
+    if separation_m <= 0.0:
+        raise ValueError("separation_m must be positive")
+    mass = coherence_domain_mass_kg(geometry, coherent_dimers)
+    sphere_radius_m = (3.0 * mass / (4.0 * math.pi * geometry.mass_density_kg_m3)) ** (1.0 / 3.0)
+    return dp_point_mass_far_field_self_energy_j(mass, max(separation_m, 2.0 * sphere_radius_m))
+
+
 def compute_eg_quadrature_validation(
     geometry: MicrotubuleGeometry,
     coherent_dimers: int,
@@ -237,6 +258,8 @@ def collapse_time_for_domain(
         eg = compute_eg_gaussian_pair(geometry, coherent_dimers, separation_m, smearing_radius_m)
     elif eg_model == "uniform_cylinder":
         eg = compute_eg_uniform_cylinder(geometry, coherent_dimers, separation_m)
+    elif eg_model == "uniform_sphere":
+        eg = compute_eg_uniform_sphere(geometry, coherent_dimers, separation_m)
     elif eg_model == "quadrature":
         eg = compute_eg_quadrature_validation(geometry, coherent_dimers, separation_m)
     elif eg_model == "diosi_regularized":
