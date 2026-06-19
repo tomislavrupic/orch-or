@@ -4,12 +4,16 @@ import unittest
 
 from orch_or.geometry import (
     DEFAULT_GEOMETRY,
+    CoordinateMassCloud,
     collapse_time_for_domain,
+    coordinate_cloud_from_points,
+    cylinder_mass_density_from_cloud,
     coherence_domain_mass_kg,
     compute_eg_gaussian_pair,
     compute_eg_diosi_regularized,
     compute_eg_quadrature_validation,
     compute_eg_uniform_cylinder,
+    gaussian_smearing_radius_from_cloud,
 )
 
 
@@ -50,6 +54,17 @@ class GeometryTests(unittest.TestCase):
         )
         self.assertGreater(eg_j, 0.0)
         self.assertGreater(tau_s, 0.0)
+
+    def test_coordinate_cloud_mass_proxy(self) -> None:
+        cloud = coordinate_cloud_from_points(
+            points_m=((0.0, 0.0, 0.0), (1.0e-9, 0.0, 0.0), (0.0, 1.0e-9, 0.0)),
+            masses_kg=(1.0, 1.0, 1.0),
+        )
+        self.assertIsInstance(cloud, CoordinateMassCloud)
+        self.assertAlmostEqual(cloud.total_mass_kg, 3.0)
+        self.assertGreater(cloud.rms_radius_m(), 0.0)
+        self.assertGreater(gaussian_smearing_radius_from_cloud(cloud), 0.0)
+        self.assertAlmostEqual(cylinder_mass_density_from_cloud(cloud, 3.0), 1.0)
 
 
 if __name__ == "__main__":

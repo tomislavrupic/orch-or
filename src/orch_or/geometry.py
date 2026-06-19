@@ -7,12 +7,14 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
+from typing import Iterable
 
 from orch_or.collapse import (
     collapse_time_s,
     dp_gaussian_self_energy_excess_j,
     dp_point_mass_far_field_self_energy_j,
 )
+from orch_or.constants import TUBULIN_DIMER_MASS_KG
 
 FIELDNAMES = [
     "assumption_label",
@@ -29,7 +31,7 @@ FIELDNAMES = [
     "tau_s",
     "source_ids",
 ]
-from orch_or.constants import TUBULIN_DIMER_MASS_KG
+Point3D = tuple[float, float, float]
 
 
 @dataclass(frozen=True)
@@ -66,6 +68,67 @@ class MicrotubuleGeometry:
     @property
     def mass_density_kg_m3(self) -> float:
         return (self.total_dimers * self.dimer_mass_kg) / self.wall_volume_m3
+
+
+@dataclass(frozen=True)
+class CoordinateMassCloud:
+    """Simple smeared-mass proxy derived from a coordinate cloud.
+
+    This is a bounded diagnostic helper, not an atomistic reconstruction.
+    """
+
+    points_m: tuple[Point3D, ...]
+    masses_kg: tuple[float, ...]
+
+    def __post_init__(self) -> None:
+        if not self.points_m:
+            raise ValueError("points_m must not be empty")
+        if len(self.points_m) != len(self.masses_kg):
+            raise ValueError("points_m and masses_kg must have the same length")
+        if any(m <= 0.0 for m in self.masses_kg):
+            raise ValueError("masses_kg must contain only positive masses")
+
+    @property
+    def total_mass_kg(self) -> float:
+        return sum(self.masses_kg)
+
+    @property
+    def center_of_mass_m(self) -> Point3D:
+        total_mass = self.total_mass_kg
+        x = sum(m * p[0] for p, m in zip(self.points_m, self.masses_kg)) / total_mass
+        y = sum(m * p[1] for p, m in zip(self.points_m, self.masses_kg)) / total_mass
+        z = sum(m * p[2] for p, m in zip(self.points_m, self.masses_kg)) / total_mass
+        return (x, y, z)
+
+    def rms_radius_m(self) -> float:
+        center = self.center_of_mass_m
+        total_mass = self.total_mass_kg
+        variance = 0.0
+        for point, mass in zip(self.points_m, self.masses_kg):
+            dx = point[0] - center[0]
+            dy = point[1] - center[1]
+            dz = point[2] - center[2]
+            variance += mass * (dx * dx + dy * dy + dz * dz)
+        return math.sqrt(variance / total_mass)
+
+
+def coordinate_cloud_from_points(
+    points_m: Iterable[Point3D],
+    masses_kg: Iterable[float],
+) -> CoordinateMassCloud:
+    return CoordinateMassCloud(tuple(points_m), tuple(masses_kg))
+
+
+def gaussian_smearing_radius_from_cloud(cloud: CoordinateMassCloud, scale_factor: float = 1.0) -> float:
+    if scale_factor <= 0.0:
+        raise ValueError("scale_factor must be positive")
+    return cloud.rms_radius_m() * scale_factor
+
+
+def cylinder_mass_density_from_cloud(cloud: CoordinateMassCloud, volume_m3: float) -> float:
+    if volume_m3 <= 0.0:
+        raise ValueError("volume_m3 must be positive")
+    return cloud.total_mass_kg / volume_m3
 
 
 DEFAULT_GEOMETRY = MicrotubuleGeometry(

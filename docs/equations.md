@@ -38,6 +38,17 @@ E_delta ~= G m^2 d^2 / (12 sqrt(pi) R0^3)
 
 This prevents numerical cancellation. It does not make the regulator biologically correct.
 
+## Coordinate-Cloud Smearing Proxy
+
+For a finite set of atomic-style coordinates `x_i` with masses `m_i`, the notebook-friendly proxy uses:
+
+```text
+x_com = sum(m_i x_i) / sum(m_i)
+r_rms = sqrt(sum(m_i |x_i - x_com|^2) / sum(m_i))
+```
+
+The code then uses `r_rms` as a diagnostic smearing radius for Gaussian-regulated rows. This is a geometry proxy, not an atomistic force-field calculation.
+
 ## Timing Margin
 
 ```text
