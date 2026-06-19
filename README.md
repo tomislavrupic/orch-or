@@ -25,6 +25,7 @@ It then adds bounded diagnostics for:
 - Diosi-Penrose threshold sensitivity for tubulin-scale mass assumptions
 - critical and supportive decoherence estimate ranges
 - anesthesia-style perturbation predictions
+- Hameroff-facing benchmark summaries for time-crystal, Trp, and anesthesia diagnostics
 
 The result is a timing audit, not an ontology.
 
@@ -50,6 +51,7 @@ PYTHONPATH=src python3 -m orch_or sweep --output examples/output/collapse_time_t
 PYTHONPATH=src python3 -m orch_or thresholds --output examples/output/dp_threshold_table.csv
 PYTHONPATH=src python3 -m orch_or decoherence --output examples/output/decoherence_estimate_table.csv
 PYTHONPATH=src python3 -m orch_or anesthesia --output examples/output/anesthesia_prediction_table.csv
+python3 examples/hameroff_benchmark.py
 ```
 
 For editable install:

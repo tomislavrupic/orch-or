@@ -15,6 +15,7 @@ It is a cross-check, not a claim of biological validity.
 | Trp superradiance | `15.7%` to `19.5%` quantum yield | `trp_superradiance_table.csv` | `tryptophan_network_rows()` | Deterministic Trp-network yield and damping proxy harness. |
 | UV superradiance | `15.7%` to `19.5%` quantum yield | `paper_matrix.md` | `supported_microphysics` row | Supports photophysics, not consciousness. |
 | Anesthetic perturbation | Collective oscillation / transport reduction | `anesthesia_prediction_table.csv` | Frequency-aware perturbation rows | The repo treats this as a bounded diagnostic only. |
+| Hameroff benchmark | Time-crystal, Trp, and anesthesia-facing emphasis set | `hameroff_benchmark.csv` | Summary metrics derived from frozen diagnostic tables | Audit index only; it introduces no additional mechanism. |
 | Timing statistics | Deterministic spread around `tau = 2.5e-2 s` | `timing_statistics_table.csv` | 9 fixed spread samples | This is a pseudo-Monte Carlo harness for reproducible timing sensitivity. |
 
 Repo interpretation:

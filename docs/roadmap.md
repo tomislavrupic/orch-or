@@ -12,6 +12,7 @@ This roadmap keeps the repo small, public, and falsifiable.
 6. Extend the geometry layer with `E_G` model switches and coherent-domain sweeps over `N`, `d`, and protofilament count.
 7. Add the time-crystal / multiscale oscillation notebook and keep the Hameroff/Bandyopadhyay source placeholders explicit until the primary citations are locked.
 8. Add the Trp superradiance / optical channel notebook and keep the Babcock/Kurian and photoprotection source trail explicit.
+9. Keep `hameroff_benchmark.csv` in the one-command reproduction as a bounded index over time-crystal, Trp, and anesthesia-facing diagnostics.
 
 ## Next
 

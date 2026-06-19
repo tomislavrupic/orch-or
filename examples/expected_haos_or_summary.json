@@ -7,6 +7,7 @@
     "decoherence_estimate_table": "decoherence_estimate_table.csv",
     "dp_threshold_table": "dp_threshold_table.csv",
     "geometry_sweep_table": "microtubule_geometry_sweep.csv",
+    "hameroff_benchmark_table": "hameroff_benchmark.csv",
     "or_decoherence_comparison_table": "or_decoherence_comparison.csv",
     "time_crystal_multiscale_table": "time_crystal_multiscale.csv",
     "timing_statistics_table": "timing_statistics_table.csv",
@@ -22,6 +23,7 @@
   "dp_threshold_rows": 12,
   "generated_at_utc": "FROZEN",
   "geometry_sweep_rows": 135,
+  "hameroff_benchmark_rows": 6,
   "haos_import_hint": {
     "collapse_definition": "loss of timing-window recoverability under perturbation",
     "metric": "timing_margin_log10",
