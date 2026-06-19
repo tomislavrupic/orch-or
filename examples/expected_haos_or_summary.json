@@ -16,7 +16,7 @@
     0.5,
     0.1
   ],
-  "decoherence_rows": 12,
+  "decoherence_rows": 20,
   "dp_threshold_rows": 12,
   "generated_at_utc": "FROZEN",
   "geometry_sweep_rows": 135,
@@ -25,7 +25,7 @@
     "metric": "timing_margin_log10",
     "perturbation_axis": "self_energy_or_decoherence_time"
   },
-  "or_decoherence_comparison_rows": 216,
+  "or_decoherence_comparison_rows": 360,
   "protofilament_count_grid": [
     1,
     2,

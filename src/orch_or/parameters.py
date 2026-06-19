@@ -185,6 +185,22 @@ DEFAULT_DECOHERENCE_ESTIMATES: tuple[DecoherenceEstimate, ...] = (
         source_ids=("hagan_2000_decoherence_reply",),
         note="Additional actin-gel enhancement range asserted by Hagan/Hameroff/Tuszynski.",
     ),
+    DecoherenceEstimate(
+        name="ion_collision_damping_proxy",
+        stance="model_assumption",
+        lower_s=1.0e-15,
+        upper_s=1.0e-11,
+        source_ids=("microtubule_energy_transport_kalra_2022",),
+        note="Proxy for ion-collision or solvent-scattering damping; bounded sensitivity row only.",
+    ),
+    DecoherenceEstimate(
+        name="water_map_protection_proxy",
+        stance="model_assumption",
+        lower_s=1.0e-4,
+        upper_s=1.0e-1,
+        source_ids=("microtubule_energy_transport_kalra_2022",),
+        note="Proxy for ordered-water or MAP-protected coherence; bounded sensitivity row only.",
+    ),
 )
 
 
