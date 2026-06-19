@@ -91,7 +91,7 @@ Before any public scientific statement:
 
 - `src/orch_or/`: pure-stdlib diagnostic package.
 - `examples/`: frozen outputs and one-command reproduction.
-- `docs/`: equations, source register, bridge contract, and roadmap.
+- `docs/`: equations, source register, paper matrix, discriminating tests, bridge contract, and roadmap.
 - `notebooks/`: executable notebook entry points.
 - `tests/`: dependency-free checks.
 
@@ -99,6 +99,8 @@ Before any public scientific statement:
 
 - [docs/equations.md](docs/equations.md): equations and approximations implemented in code.
 - [docs/source_register.md](docs/source_register.md): source IDs used by executable rows.
+- [docs/paper_matrix.md](docs/paper_matrix.md): what survives the primary-paper pass.
+- [docs/discriminating_tests.md](docs/discriminating_tests.md): model comparison and test ideas.
 - [docs/haos_iip_bridge_contract.md](docs/haos_iip_bridge_contract.md): HAOS-IIP import contract.
 - [notebooks/01_dp_thresholds.ipynb](notebooks/01_dp_thresholds.ipynb): threshold table walkthrough.
 - [notebooks/02_decoherence_anesthesia.ipynb](notebooks/02_decoherence_anesthesia.ipynb): decoherence and anesthesia prediction walkthrough.
