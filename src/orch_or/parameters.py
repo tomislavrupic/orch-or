@@ -65,6 +65,8 @@ class AnesthesiaPerturbation:
     coherent_units_multiplier: float
     coupling_multiplier: float
     decoherence_time_multiplier: float
+    frequency_hz: float
+    frequency_scale_hz: float
     source_ids: tuple[str, ...]
     predicted_direction: str
     note: str
@@ -183,6 +185,8 @@ DEFAULT_ANESTHESIA_PERTURBATIONS: tuple[AnesthesiaPerturbation, ...] = (
         coherent_units_multiplier=0.7,
         coupling_multiplier=0.7,
         decoherence_time_multiplier=0.5,
+        frequency_hz=60.0,
+        frequency_scale_hz=60.0,
         source_ids=("craddock_2017_anesthetic_thz",),
         predicted_direction="reduced_or_window",
         note="Mild executable proxy for anesthetic disruption of tubulin collective modes.",
@@ -193,6 +197,8 @@ DEFAULT_ANESTHESIA_PERTURBATIONS: tuple[AnesthesiaPerturbation, ...] = (
         coherent_units_multiplier=0.25,
         coupling_multiplier=0.25,
         decoherence_time_multiplier=0.1,
+        frequency_hz=60.0,
+        frequency_scale_hz=60.0,
         source_ids=("craddock_2017_anesthetic_thz",),
         predicted_direction="strongly_reduced_or_window",
         note="Strong stress-test proxy, not a clinical dose model.",
@@ -203,7 +209,9 @@ DEFAULT_ANESTHESIA_PERTURBATIONS: tuple[AnesthesiaPerturbation, ...] = (
         coherent_units_multiplier=1.2,
         coupling_multiplier=1.0,
         decoherence_time_multiplier=2.0,
-        source_ids=("anesthesia_counterfactual_untraced",),
+        frequency_hz=20.0,
+        frequency_scale_hz=20.0,
+        source_ids=("microtubule_energy_transport_kalra_2022", "anesthesia_counterfactual_untraced"),
         predicted_direction="expanded_or_window",
         note="Counterfactual rescue prediction; trace experimental basis before public claims.",
     ),

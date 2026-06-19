@@ -22,6 +22,8 @@ FIELDNAMES = [
     "baseline_status",
     "perturbed_status",
     "predicted_direction",
+    "frequency_hz",
+    "frequency_response",
     "source_ids",
     "note",
 ]
@@ -44,6 +46,7 @@ def anesthesia_prediction_rows(
         )
         if energy_multiplier <= 0.0:
             raise ValueError("Perturbation energy multiplier must be positive")
+        frequency_response = perturbation.frequency_hz / perturbation.frequency_scale_hz
         perturbed_tau_s = baseline_tau_s / energy_multiplier
         perturbed_decoherence_s = baseline_decoherence_s * perturbation.decoherence_time_multiplier
         perturbed_margin = timing_margin_log10(perturbed_tau_s, perturbed_decoherence_s)
@@ -61,6 +64,8 @@ def anesthesia_prediction_rows(
                 "baseline_status": timing_status(baseline_tau_s, baseline_decoherence_s),
                 "perturbed_status": timing_status(perturbed_tau_s, perturbed_decoherence_s),
                 "predicted_direction": perturbation.predicted_direction,
+                "frequency_hz": format_float(perturbation.frequency_hz),
+                "frequency_response": format_float(frequency_response),
                 "source_ids": ";".join(perturbation.source_ids),
                 "note": perturbation.note,
             }
