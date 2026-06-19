@@ -9,6 +9,7 @@ This roadmap keeps the repo small, public, and falsifiable.
 3. Add notebook screenshots or rendered outputs to show the tables in context.
 4. Use [images/The_Quantum_Bioserver_preview.png](../images/The_Quantum_Bioserver_preview.png) as the first figure preview in the repo.
 5. Add [paper_matrix.md](paper_matrix.md) and [discriminating_tests.md](discriminating_tests.md) links prominently in the README.
+6. Extend the geometry layer with `E_G` model switches and coherent-domain sweeps over `N` and `d`.
 
 ## Next
 

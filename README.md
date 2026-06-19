@@ -105,6 +105,7 @@ Before any public scientific statement:
 - [docs/haos_iip_bridge_contract.md](docs/haos_iip_bridge_contract.md): HAOS-IIP import contract.
 - [notebooks/01_dp_thresholds.ipynb](notebooks/01_dp_thresholds.ipynb): threshold table walkthrough.
 - [notebooks/02_decoherence_anesthesia.ipynb](notebooks/02_decoherence_anesthesia.ipynb): decoherence and anesthesia prediction walkthrough.
+- [notebooks/03_microtubule_geometry.ipynb](notebooks/03_microtubule_geometry.ipynb): geometry and `E_G` model comparison walkthrough.
 - [images/The_Quantum_Bioserver.pdf](images/The_Quantum_Bioserver.pdf): source poster / full-resolution figure.
 - [images/The_Quantum_Bioserver_preview.png](images/The_Quantum_Bioserver_preview.png): GitHub preview image rendered from the PDF.
 

@@ -12,4 +12,9 @@ Executable notebook path:
    - run deterministic anesthesia perturbation predictions
    - preserve claim boundaries for every scenario
 
+3. `03_microtubule_geometry.ipynb`
+   - compare Gaussian, cylinder, and quadrature `E_G` approximations
+   - sweep coherent domain size and dimer separation
+   - keep the structural source trail explicit
+
 Run notebooks from the repo root or keep the first cell's `sys.path` setup intact.
