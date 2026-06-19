@@ -57,6 +57,7 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - URL: https://www.nature.com/articles/391199a0
 - Used for: atomic tubulin-dimer geometry and mass-distribution upgrades.
 - Boundary: Primary title and journal trace are in place; promote only after DOI/page metadata is fully locked.
+- Metadata gap: lock the direct journal record and page metadata from the primary source.
 
 ## `microtubule_lattice_nogales_1999`
 
@@ -65,6 +66,7 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - URL: https://www.cell.com/cell/fulltext/S0092-8674(00)80712-3
 - Used for: 13-protofilament lattice organization and cylinder approximations.
 - Boundary: Primary lattice reference, not a validated executable parameter set yet.
+- Metadata gap: lock the direct journal record and page metadata from the primary source.
 
 ## `tubulin_atomic_lowe_2001`
 
@@ -73,6 +75,7 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - URL: https://doi.org/10.1016/S0022-2836(01)00989-8
 - Used for: higher-resolution tubulin coordinates and Gaussian-smearing choices.
 - Boundary: Use for geometry tightening once the article metadata is fully locked.
+- Metadata gap: confirm the DOI/journal record directly and extract the reported resolution from the source itself.
 
 ## `microtubule_primary_trace_pending`
 

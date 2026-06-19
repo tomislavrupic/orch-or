@@ -14,6 +14,7 @@ class Source:
     url: str
     status: str
     usage: str
+    metadata_gap: str = ""
 
 
 SOURCE_REGISTRY: dict[str, Source] = {
@@ -79,6 +80,7 @@ SOURCE_REGISTRY: dict[str, Source] = {
         url="https://www.nature.com/articles/391199a0",
         status="literature_pending",
         usage="Primary tubulin-dimer structural reference for geometry and mass-distribution upgrades.",
+        metadata_gap="Lock DOI/page metadata and verify the primary article details against a direct source record.",
     ),
     "microtubule_lattice_nogales_1999": Source(
         source_id="microtubule_lattice_nogales_1999",
@@ -88,6 +90,7 @@ SOURCE_REGISTRY: dict[str, Source] = {
         url="https://www.cell.com/cell/fulltext/S0092-8674(00)80712-3",
         status="literature_pending",
         usage="Primary lattice-geometry reference for 13-protofilament organization and cylinder approximations.",
+        metadata_gap="Lock issue/page metadata and verify the cited lattice record directly.",
     ),
     "tubulin_atomic_lowe_2001": Source(
         source_id="tubulin_atomic_lowe_2001",
@@ -97,6 +100,7 @@ SOURCE_REGISTRY: dict[str, Source] = {
         url="https://doi.org/10.1016/S0022-2836(01)00989-8",
         status="literature_pending",
         usage="Higher-resolution tubulin coordinates for geometry tightening and Gaussian smearing choices.",
+        metadata_gap="Confirm the DOI landing page or journal record and extract the resolution/structure details from a primary source.",
     ),
     "anesthesia_counterfactual_untraced": Source(
         source_id="anesthesia_counterfactual_untraced",
