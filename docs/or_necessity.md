@@ -14,6 +14,9 @@ Columns:
 
 - `or_on_tau_s`
 - `or_off_tau_s`
+- `decoherence_estimate`
+- `decoherence_time_s`
+- `decoherence_margin_log10`
 - `or_on_status`
 - `or_off_status`
 - `necessity_note`
@@ -31,6 +34,7 @@ This artifact separates:
 1. microtubule photophysics
 2. microtubule structural dynamics
 3. anesthesia-related perturbations
-4. the gravity-collapse timing claim itself
+4. decoherence-window assumptions
+5. the gravity-collapse timing claim itself
 
 Only the fourth item disappears when OR is removed.
