@@ -23,6 +23,7 @@ from orch_or.geometry import FIELDNAMES as GEOMETRY_FIELDNAMES
 from orch_or.geometry import LATTICE_FIELDNAMES
 from orch_or.geometry import geometry_sweep_rows, protofilament_lattice_sweep_rows
 from orch_or.audit_summary import build_summary
+from orch_or.data import registry as literature_registry
 from orch_or.hameroff_benchmark import FIELDNAMES as HAMEROFF_FIELDNAMES
 from orch_or.hameroff_benchmark import default_time_crystal_rows, default_trp_rows
 from orch_or.hameroff_benchmark import hameroff_benchmark_rows
@@ -80,6 +81,7 @@ def compare_exact(path: Path, expected_path: Path) -> bool:
 
 def main() -> int:
     OUTPUT.mkdir(parents=True, exist_ok=True)
+    literature_registry.validate()
     rows = default_rows()
     write_rows(GENERATED_TABLE, rows)
     dp_rows = threshold_rows()
@@ -187,6 +189,8 @@ def main() -> int:
     summary["coherence_fraction_grid"] = [1.0, 0.5, 0.1]
     summary["protofilament_count_grid"] = [1, 2, 3]
     summary["timing_statistics_spread"] = 0.25
+    summary["data_registry_validated"] = True
+    summary["tubulin_geometry_protofilaments"] = literature_registry.get_geometry_param("protofilaments")
     GENERATED_SUMMARY.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     table_matches = compare_exact(GENERATED_TABLE, EXPECTED_TABLE)

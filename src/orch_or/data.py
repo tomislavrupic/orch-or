@@ -99,6 +99,12 @@ class LiteratureRegistry:
             row["source_short"] = self.sources.get(row["source_id"], LiteratureSource("unknown", "", "")).short
         return rows
 
+    def get_geometry_param(self, param_name: str) -> float:
+        for row in self.load_tubulin_geometry():
+            if row["parameter"] == param_name:
+                return float(row["value"])
+        raise KeyError(param_name)
+
     def validate(self) -> None:
         self.load_tubulin_geometry()
         self.load_resonance_frequencies()
