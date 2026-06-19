@@ -11,6 +11,7 @@ Without Objective Reduction, the repo should not produce a finite gravity-collap
 `examples/or_off_comparison.py` writes `examples/output/or_off_comparison.csv`.
 `examples/reduction_events.py` writes `examples/output/reduction_events.csv`.
 `examples/reduction_sweep.py` writes `examples/output/reduction_sweep.csv`.
+`examples/reduction_distinction.py` writes `examples/output/reduction_distinction.csv`.
 
 Columns:
 
@@ -31,6 +32,7 @@ Interpretation:
 
 The reduction artifact adds the next layer: a menu of alternatives, a selected state, and an event-time stamp produced when the menu is reduced.
 The reduction sweep adds the falsification layer: temperature and noise change the selected state, the threshold state, and the contrast with a classical reference state.
+The distinction artifact adds the comparison layer: proxy versus OR-on versus OR-off versus non-OR quantum versus classical, plus the observable correlates and the falsifier.
 
 ## Why This Matters
 

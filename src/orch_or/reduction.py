@@ -43,6 +43,21 @@ FIELDNAMES = [
     "note",
 ]
 
+DISTINCTION_FIELDNAMES = [
+    "scenario",
+    "source_locked_proxy",
+    "selection_rule_source",
+    "or_on_output",
+    "or_off_counterfactual",
+    "non_or_quantum_alternative",
+    "classical_alternative",
+    "observable_neural_correlate",
+    "observable_behavioral_correlate",
+    "actual_falsifier",
+    "source_ids",
+    "note",
+]
+
 SWEEP_FIELDNAMES = [
     "scenario",
     "superposition_label",
@@ -246,6 +261,47 @@ def reduction_sweep_rows(
                         "note": scenario.note,
                     }
                 )
+    return rows
+
+
+def reduction_distinction_rows(scenarios: tuple[ReductionScenario, ...]) -> list[dict[str, str]]:
+    if not scenarios:
+        raise ValueError("scenarios must not be empty")
+    rows: list[dict[str, str]] = []
+    for scenario in scenarios:
+        event_row = reduction_event_row(scenario)
+        rows.append(
+            {
+                "scenario": scenario.name,
+                "source_locked_proxy": "tubulin_superposition_menu_proxy",
+                "selection_rule_source": "max(weight * pressure + bias + gamma_link_hz / 1e3)",
+                "or_on_output": (
+                    f"{event_row['selected_state']} at {event_row['event_time_s']} s; "
+                    f"{event_row['predicted_timing_correlate']}; {event_row['predicted_gamma_correlate']}; "
+                    f"{event_row['predicted_behavioral_correlate']}"
+                ),
+                "or_off_counterfactual": (
+                    "no objective reduction; no discrete selected_state; collapse timing not instantiated"
+                ),
+                "non_or_quantum_alternative": (
+                    "coherent tubulin dynamics without objective reduction; selection stays interpretive"
+                ),
+                "classical_alternative": (
+                    f"{event_row['classical_model_state']} with deterministic weight-only choice and no reduction timing"
+                ),
+                "observable_neural_correlate": (
+                    "gamma-linked phase locking and timing-window shift if OR-on; otherwise no threshold-locked phase marker"
+                ),
+                "observable_behavioral_correlate": (
+                    "bias toward the selected menu state; falsified if behavior matches classical weights without timing signature"
+                ),
+                "actual_falsifier": (
+                    "the table fails if OR-on and OR-off rows become observationally identical across timing, gamma, and bias"
+                ),
+                "source_ids": ";".join(scenario.source_ids),
+                "note": scenario.note,
+            }
+        )
     return rows
 
 

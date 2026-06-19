@@ -27,8 +27,9 @@ from orch_or.hameroff_benchmark import FIELDNAMES as HAMEROFF_FIELDNAMES
 from orch_or.hameroff_benchmark import default_time_crystal_rows, default_trp_rows
 from orch_or.hameroff_benchmark import hameroff_benchmark_rows
 from orch_or.reduction import FIELDNAMES as REDUCTION_FIELDNAMES
+from orch_or.reduction import DISTINCTION_FIELDNAMES as REDUCTION_DISTINCTION_FIELDNAMES
 from orch_or.reduction import SWEEP_FIELDNAMES as REDUCTION_SWEEP_FIELDNAMES
-from orch_or.reduction import default_reduction_scenarios, reduction_event_row, reduction_sweep_rows
+from orch_or.reduction import default_reduction_scenarios, reduction_distinction_rows, reduction_event_row, reduction_sweep_rows
 from orch_or.sweep import default_rows, write_rows
 from orch_or.thresholds import FIELDNAMES as THRESHOLD_FIELDNAMES
 from orch_or.thresholds import threshold_rows
@@ -53,6 +54,7 @@ GENERATED_TRP = OUTPUT / "trp_superradiance_table.csv"
 GENERATED_HAMEROFF = OUTPUT / "hameroff_benchmark.csv"
 GENERATED_REDUCTION = OUTPUT / "reduction_events.csv"
 GENERATED_REDUCTION_SWEEP = OUTPUT / "reduction_sweep.csv"
+GENERATED_REDUCTION_DISTINCTION = OUTPUT / "reduction_distinction.csv"
 GENERATED_SUMMARY = OUTPUT / "orch_or_summary.json"
 EXPECTED_TABLE = EXAMPLES / "expected_collapse_time_table.csv"
 EXPECTED_THRESHOLDS = EXAMPLES / "expected_dp_threshold_table.csv"
@@ -68,6 +70,7 @@ EXPECTED_TRP = EXAMPLES / "expected_trp_superradiance_table.csv"
 EXPECTED_HAMEROFF = EXAMPLES / "expected_hameroff_benchmark.csv"
 EXPECTED_REDUCTION = EXAMPLES / "expected_reduction_events.csv"
 EXPECTED_REDUCTION_SWEEP = EXAMPLES / "expected_reduction_sweep.csv"
+EXPECTED_REDUCTION_DISTINCTION = EXAMPLES / "expected_reduction_distinction.csv"
 EXPECTED_SUMMARY = EXAMPLES / "expected_orch_or_summary.json"
 
 
@@ -133,6 +136,7 @@ def main() -> int:
     )
     reduction_rows = [reduction_event_row(scenario) for scenario in default_reduction_scenarios()]
     reduction_sweeps = reduction_sweep_rows(default_reduction_scenarios())
+    reduction_distinctions = reduction_distinction_rows(default_reduction_scenarios())
     write_rows(GENERATED_THRESHOLDS, dp_rows, THRESHOLD_FIELDNAMES)
     write_rows(GENERATED_DECOHERENCE, decoherence_estimates, DECOHERENCE_FIELDNAMES)
     write_rows(GENERATED_TEMPERATURE_SWEEP, temperature_sweep, TEMPERATURE_SWEEP_FIELDNAMES)
@@ -146,6 +150,7 @@ def main() -> int:
     write_rows(GENERATED_HAMEROFF, hameroff_benchmark, HAMEROFF_FIELDNAMES)
     write_rows(GENERATED_REDUCTION, reduction_rows, REDUCTION_FIELDNAMES)
     write_rows(GENERATED_REDUCTION_SWEEP, reduction_sweeps, REDUCTION_SWEEP_FIELDNAMES)
+    write_rows(GENERATED_REDUCTION_DISTINCTION, reduction_distinctions, REDUCTION_DISTINCTION_FIELDNAMES)
 
     summary = build_summary(rows)
     summary["generated_at_utc"] = "FROZEN"
@@ -163,6 +168,7 @@ def main() -> int:
         "hameroff_benchmark_table": GENERATED_HAMEROFF.name,
         "reduction_events_table": GENERATED_REDUCTION.name,
         "reduction_sweep_table": GENERATED_REDUCTION_SWEEP.name,
+        "reduction_distinction_table": GENERATED_REDUCTION_DISTINCTION.name,
     }
     summary["dp_threshold_rows"] = len(dp_rows)
     summary["decoherence_rows"] = len(decoherence_estimates)
@@ -177,6 +183,7 @@ def main() -> int:
     summary["hameroff_benchmark_rows"] = len(hameroff_benchmark)
     summary["reduction_rows"] = len(reduction_rows)
     summary["reduction_sweep_rows"] = len(reduction_sweeps)
+    summary["reduction_distinction_rows"] = len(reduction_distinctions)
     summary["coherence_fraction_grid"] = [1.0, 0.5, 0.1]
     summary["protofilament_count_grid"] = [1, 2, 3]
     summary["timing_statistics_spread"] = 0.25
@@ -196,6 +203,7 @@ def main() -> int:
     hameroff_matches = compare_exact(GENERATED_HAMEROFF, EXPECTED_HAMEROFF)
     reduction_matches = compare_exact(GENERATED_REDUCTION, EXPECTED_REDUCTION)
     reduction_sweep_matches = compare_exact(GENERATED_REDUCTION_SWEEP, EXPECTED_REDUCTION_SWEEP)
+    reduction_distinction_matches = compare_exact(GENERATED_REDUCTION_DISTINCTION, EXPECTED_REDUCTION_DISTINCTION)
     summary_matches = compare_exact(GENERATED_SUMMARY, EXPECTED_SUMMARY)
     if (
         not table_matches
@@ -212,6 +220,7 @@ def main() -> int:
         or not hameroff_matches
         or not reduction_matches
         or not reduction_sweep_matches
+        or not reduction_distinction_matches
         or not summary_matches
     ):
         raise SystemExit(
@@ -230,6 +239,7 @@ def main() -> int:
             f"hameroff_matches={hameroff_matches}\n"
             f"reduction_matches={reduction_matches}\n"
             f"reduction_sweep_matches={reduction_sweep_matches}\n"
+            f"reduction_distinction_matches={reduction_distinction_matches}\n"
             f"summary_matches={summary_matches}\n"
             f"generated_table={GENERATED_TABLE}\n"
             f"generated_thresholds={GENERATED_THRESHOLDS}\n"
@@ -242,6 +252,7 @@ def main() -> int:
             f"generated_hameroff={GENERATED_HAMEROFF}\n"
             f"generated_reduction={GENERATED_REDUCTION}\n"
             f"generated_reduction_sweep={GENERATED_REDUCTION_SWEEP}\n"
+            f"generated_reduction_distinction={GENERATED_REDUCTION_DISTINCTION}\n"
             f"generated_summary={GENERATED_SUMMARY}"
         )
 
@@ -260,6 +271,7 @@ def main() -> int:
     print(f"Hameroff benchmark: {GENERATED_HAMEROFF}")
     print(f"Reduction events: {GENERATED_REDUCTION}")
     print(f"Reduction sweep: {GENERATED_REDUCTION_SWEEP}")
+    print(f"Reduction distinction: {GENERATED_REDUCTION_DISTINCTION}")
     print(f"Summary: {GENERATED_SUMMARY}")
     print(
         "Statement: tau=hbar/E_G timing diagnostics, DP threshold sensitivity, "

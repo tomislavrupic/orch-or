@@ -25,6 +25,7 @@ It then adds bounded diagnostics for:
 - Diosi-Penrose threshold sensitivity for tubulin-scale mass assumptions
 - primary-source protofilament lattice geometry proxy
 - discrete reduction events from explicit state menus
+- source-locked reduction distinction tables
 - critical and supportive decoherence estimate ranges
 - anesthesia-style perturbation predictions
 - Hameroff-facing benchmark summaries for time-crystal, Trp, and anesthesia diagnostics
@@ -57,6 +58,7 @@ python3 examples/protofilament_lattice_sweep.py
 python3 examples/hameroff_benchmark.py
 python3 examples/reduction_events.py
 python3 examples/reduction_sweep.py
+python3 examples/reduction_distinction.py
 ```
 
 For editable install:

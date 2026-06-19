@@ -10,6 +10,7 @@
     "hameroff_benchmark_table": "hameroff_benchmark.csv",
     "or_decoherence_comparison_table": "or_decoherence_comparison.csv",
     "protofilament_lattice_table": "protofilament_lattice_sweep.csv",
+    "reduction_distinction_table": "reduction_distinction.csv",
     "reduction_events_table": "reduction_events.csv",
     "reduction_sweep_table": "reduction_sweep.csv",
     "time_crystal_multiscale_table": "time_crystal_multiscale.csv",
@@ -39,6 +40,7 @@
     3
   ],
   "protofilament_lattice_rows": 54,
+  "reduction_distinction_rows": 2,
   "reduction_rows": 2,
   "reduction_sweep_rows": 18,
   "row_count": 3,
