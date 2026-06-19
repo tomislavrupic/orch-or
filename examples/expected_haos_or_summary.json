@@ -19,13 +19,18 @@
   "decoherence_rows": 12,
   "dp_threshold_rows": 12,
   "generated_at_utc": "FROZEN",
-  "geometry_sweep_rows": 45,
+  "geometry_sweep_rows": 135,
   "haos_import_hint": {
     "collapse_definition": "loss of timing-window recoverability under perturbation",
     "metric": "timing_margin_log10",
     "perturbation_axis": "self_energy_or_decoherence_time"
   },
-  "or_decoherence_comparison_rows": 72,
+  "or_decoherence_comparison_rows": 216,
+  "protofilament_count_grid": [
+    1,
+    2,
+    3
+  ],
   "row_count": 3,
   "status_counts": {
     "decoherence_preempts_or": 1,

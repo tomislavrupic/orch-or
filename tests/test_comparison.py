@@ -25,6 +25,7 @@ class ComparisonTests(unittest.TestCase):
             rows = list(csv.DictReader(handle))
         self.assertGreater(len(rows), 0)
         self.assertTrue(all(row["comparison"] == "geometry_vs_decoherence" for row in rows))
+        self.assertTrue(all(row["protofilament_count"] in {"1", "2", "3"} for row in rows))
         self.assertTrue(all(row["or_favorable"] == "no" for row in rows))
 
 

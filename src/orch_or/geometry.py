@@ -17,6 +17,7 @@ from orch_or.collapse import (
 FIELDNAMES = [
     "assumption_label",
     "eg_model",
+    "protofilament_count",
     "coherent_dimers",
     "coherence_fraction",
     "separation_m",
@@ -184,6 +185,7 @@ def collapse_time_for_domain(
 
 def geometry_sweep_rows(
     geometry: MicrotubuleGeometry,
+    protofilament_count_grid: tuple[int, ...],
     coherent_dimers_grid: tuple[int, ...],
     coherence_fraction_grid: tuple[float, ...],
     separation_grid_m: tuple[float, ...],
@@ -192,6 +194,8 @@ def geometry_sweep_rows(
     source_ids: tuple[str, ...],
     assumption_label: str,
 ) -> list[dict[str, str]]:
+    if not protofilament_count_grid:
+        raise ValueError("protofilament_count_grid must not be empty")
     if not coherent_dimers_grid:
         raise ValueError("coherent_dimers_grid must not be empty")
     if not coherence_fraction_grid:
@@ -199,33 +203,37 @@ def geometry_sweep_rows(
     if not separation_grid_m:
         raise ValueError("separation_grid_m must not be empty")
     rows: list[dict[str, str]] = []
-    for coherent_dimers in coherent_dimers_grid:
-        for coherence_fraction in coherence_fraction_grid:
-            if coherence_fraction <= 0.0 or coherence_fraction > 1.0:
-                raise ValueError("coherence_fraction must be in (0, 1]")
-            effective_dimers = max(1, round(coherent_dimers * coherence_fraction))
-            for separation_m in separation_grid_m:
-                eg_j, tau_s = collapse_time_for_domain(
-                    geometry=geometry,
-                    coherent_dimers=effective_dimers,
-                    separation_m=separation_m,
-                    smearing_radius_m=smearing_radius_m,
-                    eg_model=eg_model,
-                )
-                rows.append(
-                    {
-                        "assumption_label": assumption_label,
-                        "eg_model": eg_model,
-                        "coherent_dimers": str(coherent_dimers),
-                        "coherence_fraction": f"{coherence_fraction:.6f}",
-                        "separation_m": f"{separation_m:.6e}",
-                        "smearing_radius_m": f"{smearing_radius_m:.6e}",
-                        "total_dimers": str(geometry.total_dimers),
-                        "geometry_outer_diameter_m": f"{geometry.outer_diameter_m:.6e}",
-                        "geometry_mass_density_kg_m3": f"{geometry.mass_density_kg_m3:.6e}",
-                        "eg_j": f"{eg_j:.6e}",
-                        "tau_s": f"{tau_s:.6e}",
-                        "source_ids": ";".join(source_ids),
-                    }
-                )
+    for protofilament_count in protofilament_count_grid:
+        if protofilament_count <= 0:
+            raise ValueError("protofilament_count must be positive")
+        for coherent_dimers in coherent_dimers_grid:
+            for coherence_fraction in coherence_fraction_grid:
+                if coherence_fraction <= 0.0 or coherence_fraction > 1.0:
+                    raise ValueError("coherence_fraction must be in (0, 1]")
+                effective_dimers = max(1, round(coherent_dimers * coherence_fraction * protofilament_count))
+                for separation_m in separation_grid_m:
+                    eg_j, tau_s = collapse_time_for_domain(
+                        geometry=geometry,
+                        coherent_dimers=effective_dimers,
+                        separation_m=separation_m,
+                        smearing_radius_m=smearing_radius_m,
+                        eg_model=eg_model,
+                    )
+                    rows.append(
+                        {
+                            "assumption_label": assumption_label,
+                            "eg_model": eg_model,
+                            "protofilament_count": str(protofilament_count),
+                            "coherent_dimers": str(coherent_dimers),
+                            "coherence_fraction": f"{coherence_fraction:.6f}",
+                            "separation_m": f"{separation_m:.6e}",
+                            "smearing_radius_m": f"{smearing_radius_m:.6e}",
+                            "total_dimers": str(geometry.total_dimers),
+                            "geometry_outer_diameter_m": f"{geometry.outer_diameter_m:.6e}",
+                            "geometry_mass_density_kg_m3": f"{geometry.mass_density_kg_m3:.6e}",
+                            "eg_j": f"{eg_j:.6e}",
+                            "tau_s": f"{tau_s:.6e}",
+                            "source_ids": ";".join(source_ids),
+                        }
+                    )
     return rows

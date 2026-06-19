@@ -19,6 +19,9 @@ class GeometryTests(unittest.TestCase):
         self.assertEqual(DEFAULT_GEOMETRY.dimers_per_protofilament, 8)
         self.assertGreater(DEFAULT_GEOMETRY.mass_density_kg_m3, 0.0)
 
+    def test_default_geometry_total_dimers_matches_lattice(self) -> None:
+        self.assertEqual(DEFAULT_GEOMETRY.total_dimers, 104)
+
     def test_mass_scales_with_coherent_dimers(self) -> None:
         mass_13 = coherence_domain_mass_kg(DEFAULT_GEOMETRY, 13)
         mass_26 = coherence_domain_mass_kg(DEFAULT_GEOMETRY, 26)

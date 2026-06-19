@@ -57,6 +57,7 @@ def main() -> int:
     anesthesia_predictions = anesthesia_prediction_rows()
     geometry_rows = geometry_sweep_rows(
         geometry=DEFAULT_GEOMETRY,
+        protofilament_count_grid=(1, 2, 3),
         coherent_dimers_grid=(1, 13, 130, 1300, 10_000),
         coherence_fraction_grid=(1.0, 0.5, 0.1),
         separation_grid_m=(1.0e-10, 1.0e-9, 1.0e-8),
@@ -107,6 +108,7 @@ def main() -> int:
     summary["or_decoherence_comparison_rows"] = len(comparison)
     summary["timing_statistics_rows"] = len(statistics_rows)
     summary["coherence_fraction_grid"] = [1.0, 0.5, 0.1]
+    summary["protofilament_count_grid"] = [1, 2, 3]
     summary["timing_statistics_spread"] = 0.25
     GENERATED_SUMMARY.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
