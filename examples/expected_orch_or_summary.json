@@ -9,6 +9,7 @@
     "geometry_sweep_table": "microtubule_geometry_sweep.csv",
     "hameroff_benchmark_table": "hameroff_benchmark.csv",
     "or_decoherence_comparison_table": "or_decoherence_comparison.csv",
+    "protofilament_lattice_table": "protofilament_lattice_sweep.csv",
     "time_crystal_multiscale_table": "time_crystal_multiscale.csv",
     "timing_statistics_table": "timing_statistics_table.csv",
     "trp_superradiance_table": "trp_superradiance_table.csv"
@@ -35,6 +36,7 @@
     2,
     3
   ],
+  "protofilament_lattice_rows": 54,
   "row_count": 3,
   "status_counts": {
     "decoherence_preempts_or": 1,

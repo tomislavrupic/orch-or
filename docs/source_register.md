@@ -52,30 +52,30 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 
 ## `microtubule_structure_nogales_1998`
 
-- Status: `literature_pending`
-- Source: E. Nogales, S. G. Wolf, K. H. Downing, "Structure of the alpha beta tubulin dimer by electron crystallography" (Nature, 1998)
-- URL: https://www.nature.com/articles/391199a0
-- Used for: atomic tubulin-dimer geometry and mass-distribution upgrades.
-- Boundary: Primary title and journal trace are in place; promote only after DOI/page metadata is fully locked.
-- Metadata gap: lock the direct journal record and page metadata from the primary source.
+- Status: `literature_traced`
+- Source: Eva Nogales, Sharon G. Wolf, Kenneth H. Downing, "Structure of the alpha beta tubulin dimer by electron crystallography" (Nature 391, 199-203, 1998)
+- URL: https://doi.org/10.1038/34465
+- Used for: primary tubulin-dimer geometry and mass-distribution upgrades.
+- Boundary: Primary structure trace only; it does not establish a biological Orch-OR coherent domain.
+- Locked metadata: DOI `10.1038/34465`; Nature volume `391`, pages `199-203`.
 
 ## `microtubule_lattice_nogales_1999`
 
-- Status: `literature_pending`
-- Source: E. Nogales, M. Whittaker, R. A. Milligan, K. H. Downing, "High-resolution model of the microtubule" (Cell, 1999)
-- URL: https://www.cell.com/cell/fulltext/S0092-8674(00)80712-3
-- Used for: 13-protofilament lattice organization and cylinder approximations.
-- Boundary: Primary lattice reference, not a validated executable parameter set yet.
-- Metadata gap: lock the direct journal record and page metadata from the primary source.
+- Status: `literature_traced`
+- Source: Eva Nogales, Michael Whittaker, Ronald A. Milligan, Kenneth H. Downing, "High-resolution model of the microtubule" (Cell 96(1), 79-88, 1999)
+- URL: https://doi.org/10.1016/S0092-8674(00)80961-7
+- Used for: protofilament lattice organization, helical geometry proxies, and cylinder approximations.
+- Boundary: Primary lattice reference, not a validated executable coherent-domain parameter set.
+- Locked metadata: DOI `10.1016/S0092-8674(00)80961-7`; Cell volume `96`, issue `1`, pages `79-88`.
 
 ## `tubulin_atomic_lowe_2001`
 
-- Status: `literature_pending`
-- Source: J. Lowe, H. Li, K. H. Downing, E. Nogales, "Refined structure of alpha beta-tubulin at 3.5 A resolution" (Journal of Molecular Biology, 2001)
-- URL: https://doi.org/10.1016/S0022-2836(01)00989-8
-- Used for: higher-resolution tubulin coordinates and Gaussian-smearing choices.
-- Boundary: Use for geometry tightening once the article metadata is fully locked.
-- Metadata gap: confirm the DOI/journal record directly and extract the reported resolution from the source itself.
+- Status: `literature_traced`
+- Source: J. Lowe, H. Li, K. H. Downing, E. Nogales, "Refined structure of alpha beta-tubulin at 3.5 A resolution" (Journal of Molecular Biology 313(5), 1045-1057, 2001)
+- URL: https://doi.org/10.1006/jmbi.2001.5077
+- Used for: refined tubulin coordinates and Gaussian-smearing choices.
+- Boundary: Coordinate refinement source only; executable rows still use dimer-center mass proxies until atomic coordinates are imported.
+- Locked metadata: DOI `10.1006/jmbi.2001.5077`; JMB volume `313`, issue `5`, pages `1045-1057`.
 
 ## `microtubule_primary_trace_pending`
 

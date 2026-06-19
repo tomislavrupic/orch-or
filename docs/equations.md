@@ -59,6 +59,19 @@ r_rms = sqrt(sum(m_i |x_i - x_com|^2) / sum(m_i))
 
 The code then uses `r_rms` as a diagnostic smearing radius for Gaussian-regulated rows. This is a geometry proxy, not an atomistic force-field calculation.
 
+## Protofilament Lattice Proxy
+
+For the microtubule lattice sweep, the repo places tubulin-dimer centers on a cylindrical lattice:
+
+```text
+theta = 2 pi (protofilament_index + helical_start_number * dimer_index) / protofilament_count
+x = r cos(theta)
+y = r sin(theta)
+z = dimer_index * tubulin_length
+```
+
+The selected dimer-center cloud is converted into an RMS smearing radius, then evaluated with the same Gaussian-regulated DP timing proxy. This adds helical/protofilament sensitivity while remaining below an atomistic mass-distribution calculation.
+
 ## Timing Margin
 
 ```text

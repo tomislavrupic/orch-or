@@ -11,6 +11,7 @@ It is a cross-check, not a claim of biological validity.
 | Ion-collision damping proxy | `1e-15` to `1e-11` s | `decoherence_estimate_table.csv` | `ion_collision_damping_proxy` | Model-assumption row for fast environmental damping. |
 | Water/MAP protection proxy | `1e-4` to `1e-1` s | `decoherence_estimate_table.csv` | `water_map_protection_proxy` | Model-assumption row for slower protective damping. |
 | Temperature sweep | `280 K` / `310 K` / `350 K` | `temperature_decoherence_sweep.csv` | `temperature_sweep_rows()` | Deterministic temperature-sensitivity harness for the same decoherence estimates. |
+| Primary MT structure | Nature `391:199-203`, Cell `96(1):79-88`, JMB `313(5):1045-1057` | `protofilament_lattice_sweep.csv` | 11/13/15 protofilament dimer-center lattice rows | Uses primary structural refs but remains a centroid-cloud proxy. |
 | Microtubule transport | `~6.6 nm` diffusion length | `or_decoherence_comparison.csv` | Geometry-vs-decoherence no OR-favorable islands in current band | Transport is supported, but it does not rescue the current OR timing band. |
 | Trp superradiance | `15.7%` to `19.5%` quantum yield | `trp_superradiance_table.csv` | `tryptophan_network_rows()` | Deterministic Trp-network yield and damping proxy harness. |
 | UV superradiance | `15.7%` to `19.5%` quantum yield | `paper_matrix.md` | `supported_microphysics` row | Supports photophysics, not consciousness. |

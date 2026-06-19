@@ -18,6 +18,8 @@ from orch_or.geometry import (
     compute_eg_quadrature_validation,
     compute_eg_uniform_cylinder,
     geometry_sweep_rows,
+    protofilament_lattice_points,
+    protofilament_lattice_sweep_rows,
 )
 from orch_or.statistics import FIELDNAMES as STATISTICS_FIELDNAMES
 from orch_or.statistics import deterministic_jitter_factors, timing_statistics_rows
@@ -37,6 +39,8 @@ __all__ = [
     "compute_eg_quadrature_validation",
     "compute_eg_uniform_cylinder",
     "geometry_sweep_rows",
+    "protofilament_lattice_points",
+    "protofilament_lattice_sweep_rows",
     "STATISTICS_FIELDNAMES",
     "deterministic_jitter_factors",
     "timing_statistics_rows",

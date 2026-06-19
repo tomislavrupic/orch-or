@@ -18,7 +18,10 @@ from orch_or.decoherence import TEMPERATURE_SWEEP_FIELDNAMES
 from orch_or.decoherence import temperature_sweep_rows
 from orch_or.comparison import FIELDNAMES as COMPARISON_FIELDNAMES
 from orch_or.comparison import comparison_rows
-from orch_or.geometry import DEFAULT_GEOMETRY, FIELDNAMES as GEOMETRY_FIELDNAMES, geometry_sweep_rows
+from orch_or.geometry import DEFAULT_GEOMETRY
+from orch_or.geometry import FIELDNAMES as GEOMETRY_FIELDNAMES
+from orch_or.geometry import LATTICE_FIELDNAMES
+from orch_or.geometry import geometry_sweep_rows, protofilament_lattice_sweep_rows
 from orch_or.audit_summary import build_summary
 from orch_or.hameroff_benchmark import FIELDNAMES as HAMEROFF_FIELDNAMES
 from orch_or.hameroff_benchmark import default_time_crystal_rows, default_trp_rows
@@ -39,6 +42,7 @@ GENERATED_DECOHERENCE = OUTPUT / "decoherence_estimate_table.csv"
 GENERATED_TEMPERATURE_SWEEP = OUTPUT / "temperature_decoherence_sweep.csv"
 GENERATED_ANESTHESIA = OUTPUT / "anesthesia_prediction_table.csv"
 GENERATED_GEOMETRY = OUTPUT / "microtubule_geometry_sweep.csv"
+GENERATED_LATTICE = OUTPUT / "protofilament_lattice_sweep.csv"
 GENERATED_COMPARISON = OUTPUT / "or_decoherence_comparison.csv"
 GENERATED_STATISTICS = OUTPUT / "timing_statistics_table.csv"
 GENERATED_TIME_CRYSTAL = OUTPUT / "time_crystal_multiscale.csv"
@@ -51,6 +55,7 @@ EXPECTED_DECOHERENCE = EXAMPLES / "expected_decoherence_estimate_table.csv"
 EXPECTED_TEMPERATURE_SWEEP = EXAMPLES / "expected_temperature_decoherence_sweep.csv"
 EXPECTED_ANESTHESIA = EXAMPLES / "expected_anesthesia_prediction_table.csv"
 EXPECTED_GEOMETRY = EXAMPLES / "expected_microtubule_geometry_sweep.csv"
+EXPECTED_LATTICE = EXAMPLES / "expected_protofilament_lattice_sweep.csv"
 EXPECTED_COMPARISON = EXAMPLES / "expected_or_decoherence_comparison.csv"
 EXPECTED_STATISTICS = EXAMPLES / "expected_timing_statistics_table.csv"
 EXPECTED_TIME_CRYSTAL = EXAMPLES / "expected_time_crystal_multiscale.csv"
@@ -87,6 +92,19 @@ def main() -> int:
         ),
         assumption_label="primary_trace_candidate",
     )
+    lattice_rows = protofilament_lattice_sweep_rows(
+        geometry=DEFAULT_GEOMETRY,
+        protofilament_count_grid=(11, 13, 15),
+        dimers_per_protofilament_grid=(1, 4, 8),
+        coherence_fraction_grid=(1.0, 0.5),
+        separation_grid_m=(1.0e-10, 1.0e-9, 1.0e-8),
+        source_ids=(
+            "microtubule_structure_nogales_1998",
+            "microtubule_lattice_nogales_1999",
+            "tubulin_atomic_lowe_2001",
+        ),
+        assumption_label="primary_lattice_proxy",
+    )
     comparison = comparison_rows()
     statistics_rows = timing_statistics_rows(
         baseline_tau_s=2.5e-2,
@@ -111,6 +129,7 @@ def main() -> int:
     write_rows(GENERATED_TEMPERATURE_SWEEP, temperature_sweep, TEMPERATURE_SWEEP_FIELDNAMES)
     write_rows(GENERATED_ANESTHESIA, anesthesia_predictions, ANESTHESIA_FIELDNAMES)
     write_rows(GENERATED_GEOMETRY, geometry_rows, GEOMETRY_FIELDNAMES)
+    write_rows(GENERATED_LATTICE, lattice_rows, LATTICE_FIELDNAMES)
     write_rows(GENERATED_COMPARISON, comparison, COMPARISON_FIELDNAMES)
     write_rows(GENERATED_STATISTICS, statistics_rows, STATISTICS_FIELDNAMES)
     write_rows(GENERATED_TIME_CRYSTAL, time_crystal_rows, TIME_CRYSTAL_FIELDNAMES)
@@ -125,6 +144,7 @@ def main() -> int:
         "decoherence_estimate_table": GENERATED_DECOHERENCE.name,
         "anesthesia_prediction_table": GENERATED_ANESTHESIA.name,
         "geometry_sweep_table": GENERATED_GEOMETRY.name,
+        "protofilament_lattice_table": GENERATED_LATTICE.name,
         "or_decoherence_comparison_table": GENERATED_COMPARISON.name,
         "timing_statistics_table": GENERATED_STATISTICS.name,
         "time_crystal_multiscale_table": GENERATED_TIME_CRYSTAL.name,
@@ -136,6 +156,7 @@ def main() -> int:
     summary["temperature_sweep_rows"] = len(temperature_sweep)
     summary["anesthesia_prediction_rows"] = len(anesthesia_predictions)
     summary["geometry_sweep_rows"] = len(geometry_rows)
+    summary["protofilament_lattice_rows"] = len(lattice_rows)
     summary["or_decoherence_comparison_rows"] = len(comparison)
     summary["timing_statistics_rows"] = len(statistics_rows)
     summary["time_crystal_rows"] = len(time_crystal_rows)
@@ -152,6 +173,7 @@ def main() -> int:
     temperature_sweep_matches = compare_exact(GENERATED_TEMPERATURE_SWEEP, EXPECTED_TEMPERATURE_SWEEP)
     anesthesia_matches = compare_exact(GENERATED_ANESTHESIA, EXPECTED_ANESTHESIA)
     geometry_matches = compare_exact(GENERATED_GEOMETRY, EXPECTED_GEOMETRY)
+    lattice_matches = compare_exact(GENERATED_LATTICE, EXPECTED_LATTICE)
     comparison_matches = compare_exact(GENERATED_COMPARISON, EXPECTED_COMPARISON)
     statistics_matches = compare_exact(GENERATED_STATISTICS, EXPECTED_STATISTICS)
     time_crystal_matches = compare_exact(GENERATED_TIME_CRYSTAL, EXPECTED_TIME_CRYSTAL)
@@ -165,6 +187,7 @@ def main() -> int:
         or not temperature_sweep_matches
         or not anesthesia_matches
         or not geometry_matches
+        or not lattice_matches
         or not comparison_matches
         or not statistics_matches
         or not time_crystal_matches
@@ -180,6 +203,7 @@ def main() -> int:
             f"temperature_sweep_matches={temperature_sweep_matches}\n"
             f"anesthesia_matches={anesthesia_matches}\n"
             f"geometry_matches={geometry_matches}\n"
+            f"lattice_matches={lattice_matches}\n"
             f"comparison_matches={comparison_matches}\n"
             f"statistics_matches={statistics_matches}\n"
             f"time_crystal_matches={time_crystal_matches}\n"
@@ -191,6 +215,7 @@ def main() -> int:
             f"generated_decoherence={GENERATED_DECOHERENCE}\n"
             f"generated_anesthesia={GENERATED_ANESTHESIA}\n"
             f"generated_geometry={GENERATED_GEOMETRY}\n"
+            f"generated_lattice={GENERATED_LATTICE}\n"
             f"generated_comparison={GENERATED_COMPARISON}\n"
             f"generated_statistics={GENERATED_STATISTICS}\n"
             f"generated_hameroff={GENERATED_HAMEROFF}\n"
@@ -204,6 +229,7 @@ def main() -> int:
     print(f"Temperature sweep: {GENERATED_TEMPERATURE_SWEEP}")
     print(f"Anesthesia predictions: {GENERATED_ANESTHESIA}")
     print(f"Geometry sweep: {GENERATED_GEOMETRY}")
+    print(f"Protofilament lattice sweep: {GENERATED_LATTICE}")
     print(f"OR/decoherence comparison: {GENERATED_COMPARISON}")
     print(f"Timing statistics: {GENERATED_STATISTICS}")
     print(f"Time crystal sweep: {GENERATED_TIME_CRYSTAL}")
@@ -212,7 +238,7 @@ def main() -> int:
     print(f"Summary: {GENERATED_SUMMARY}")
     print(
         "Statement: tau=hbar/E_G timing diagnostics, DP threshold sensitivity, "
-        "decoherence windows, geometry sweeps, OR/decoherence comparison, timing statistics, anesthesia perturbation predictions, "
+        "decoherence windows, geometry sweeps, protofilament lattice sweeps, OR/decoherence comparison, timing statistics, anesthesia perturbation predictions, "
         "and Hameroff-facing benchmark summaries reproduce. "
         "No biological, consciousness, or ontology claim is introduced."
     )

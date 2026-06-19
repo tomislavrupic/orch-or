@@ -20,13 +20,16 @@ This file tracks sources that must be traced before toy values become public sci
 8. Time-crystal and multiscale microtubule oscillation references linked to the current Hameroff emphasis.
 9. Tryptophan superradiance, photoprotection, and microtubule quantum optical channel references.
 
-## Strong Candidate Primary Structural Sources
+## Locked Primary Structural Sources
 
-These are the next primary sources to trace directly if we want to finish locking the structural metadata behind the already-wired executable defaults:
+These primary sources now carry locked DOI/page metadata in `docs/source_register.md` and `src/orch_or/sources.py`:
 
-- Nogales, Wolf, Downing 1998, "Structure of the alpha beta tubulin dimer by electron crystallography" (Nature).
-- Nogales, Whittaker, Milligan, Downing 1999, "High-resolution model of the microtubule" (Cell).
-- Lowe, Li, Downing, Nogales 2001, "Refined structure of alpha beta-tubulin at 3.5 A resolution" (Journal of Molecular Biology).
+- Nogales, Wolf, Downing 1998, "Structure of the alpha beta tubulin dimer by electron crystallography" (Nature 391, 199-203), DOI `10.1038/34465`.
+- Nogales, Whittaker, Milligan, Downing 1999, "High-resolution model of the microtubule" (Cell 96(1), 79-88), DOI `10.1016/S0092-8674(00)80961-7`.
+- Lowe, Li, Downing, Nogales 2001, "Refined structure of alpha beta-tubulin at 3.5 A resolution" (Journal of Molecular Biology 313(5), 1045-1057), DOI `10.1006/jmbi.2001.5077`.
+
+Next structural step:
+Import a real coordinate table or PDB-derived centroid cloud rather than using dimer-center lattice proxies.
 
 ## Time-Crystal Source Targets
 
@@ -50,7 +53,7 @@ These are placeholders for the current Trp optical-channel workstream until the 
 - `hagan_2000_decoherence_reply`: traced enough for the supportive/contested decoherence ranges.
 - `craddock_2017_anesthetic_thz`: traced enough for direction-of-effect anesthesia perturbation predictions.
 - `microtubule_structure_secondary`: secondary only; retained as a historical placeholder, but not used in the current geometry defaults.
-- `microtubule_structure_nogales_1998`, `microtubule_lattice_nogales_1999`, `tubulin_atomic_lowe_2001`: literature pending; use for geometry upgrades once metadata is locked.
+- `microtubule_structure_nogales_1998`, `microtubule_lattice_nogales_1999`, `tubulin_atomic_lowe_2001`: traced primary structure references used by the geometry and protofilament lattice rows.
 - `anesthesia_counterfactual_untraced`: model assumption only.
 - `hameroff_time_crystal_2026`, `bandyopadhyay_multiscale_resonance`: model assumptions tied to the current notebook roadmap; keep as placeholders until the primary papers are locked.
 - `tryptophan_superradiance_2024`, `photoprotection_architectures_2024`, `superradiant_excitonic_states_2018`: supported-microphysics source rows for the Trp optical-channel layer; keep the citation trail explicit until the repo has direct traces for the exact publication metadata.

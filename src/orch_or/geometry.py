@@ -15,6 +15,7 @@ from orch_or.collapse import (
     dp_point_mass_far_field_self_energy_j,
 )
 from orch_or.constants import TUBULIN_DIMER_MASS_KG
+from orch_or.sources import require_known_sources
 
 FIELDNAMES = [
     "assumption_label",
@@ -30,6 +31,22 @@ FIELDNAMES = [
     "eg_j",
     "tau_s",
     "source_ids",
+]
+LATTICE_FIELDNAMES = [
+    "assumption_label",
+    "protofilament_count",
+    "dimers_per_protofilament",
+    "helical_start_number",
+    "coherence_fraction",
+    "selected_dimers",
+    "lattice_radius_m",
+    "lattice_length_m",
+    "cloud_rms_radius_m",
+    "separation_m",
+    "eg_j",
+    "tau_s",
+    "source_ids",
+    "note",
 ]
 Point3D = tuple[float, float, float]
 
@@ -245,6 +262,111 @@ def compute_eg_diosi_regularized(
         separation_m=softened_separation,
         smearing_radius_m=smearing_radius_m,
     )
+
+
+def protofilament_lattice_points(
+    geometry: MicrotubuleGeometry,
+    protofilament_count: int,
+    dimers_per_protofilament: int,
+    helical_start_number: int = 3,
+) -> tuple[Point3D, ...]:
+    if protofilament_count <= 0:
+        raise ValueError("protofilament_count must be positive")
+    if dimers_per_protofilament <= 0:
+        raise ValueError("dimers_per_protofilament must be positive")
+    if helical_start_number < 0:
+        raise ValueError("helical_start_number must be non-negative")
+
+    lattice_radius_m = max(0.0, geometry.outer_radius_m - geometry.wall_thickness_m / 2.0)
+    points: list[Point3D] = []
+    for dimer_index in range(dimers_per_protofilament):
+        axial_z_m = dimer_index * geometry.tubulin_length_m
+        row_offset = helical_start_number * dimer_index
+        for protofilament_index in range(protofilament_count):
+            angle = 2.0 * math.pi * (protofilament_index + row_offset) / protofilament_count
+            points.append(
+                (
+                    lattice_radius_m * math.cos(angle),
+                    lattice_radius_m * math.sin(angle),
+                    axial_z_m,
+                )
+            )
+    return tuple(points)
+
+
+def protofilament_lattice_sweep_rows(
+    geometry: MicrotubuleGeometry,
+    protofilament_count_grid: tuple[int, ...],
+    dimers_per_protofilament_grid: tuple[int, ...],
+    coherence_fraction_grid: tuple[float, ...],
+    separation_grid_m: tuple[float, ...],
+    source_ids: tuple[str, ...],
+    assumption_label: str,
+    helical_start_number: int = 3,
+    note: str = "Dimer-center protofilament lattice proxy; not an atomistic mass distribution.",
+) -> list[dict[str, str]]:
+    if not protofilament_count_grid:
+        raise ValueError("protofilament_count_grid must not be empty")
+    if not dimers_per_protofilament_grid:
+        raise ValueError("dimers_per_protofilament_grid must not be empty")
+    if not coherence_fraction_grid:
+        raise ValueError("coherence_fraction_grid must not be empty")
+    if not separation_grid_m:
+        raise ValueError("separation_grid_m must not be empty")
+    require_known_sources(source_ids)
+
+    rows: list[dict[str, str]] = []
+    for protofilament_count in protofilament_count_grid:
+        for dimers_per_protofilament in dimers_per_protofilament_grid:
+            points = protofilament_lattice_points(
+                geometry=geometry,
+                protofilament_count=protofilament_count,
+                dimers_per_protofilament=dimers_per_protofilament,
+                helical_start_number=helical_start_number,
+            )
+            lattice_radius_m = max(0.0, geometry.outer_radius_m - geometry.wall_thickness_m / 2.0)
+            lattice_length_m = dimers_per_protofilament * geometry.tubulin_length_m
+            for coherence_fraction in coherence_fraction_grid:
+                if coherence_fraction <= 0.0 or coherence_fraction > 1.0:
+                    raise ValueError("coherence_fraction must be in (0, 1]")
+                selected_dimers = max(1, round(len(points) * coherence_fraction))
+                selected_points = points[:selected_dimers]
+                cloud = coordinate_cloud_from_points(
+                    selected_points,
+                    (geometry.dimer_mass_kg for _ in selected_points),
+                )
+                smearing_radius_m = max(
+                    gaussian_smearing_radius_from_cloud(cloud),
+                    geometry.tubulin_length_m * 0.5,
+                )
+                total_mass_kg = cloud.total_mass_kg
+                for separation_m in separation_grid_m:
+                    if separation_m <= 0.0:
+                        raise ValueError("separation_m must be positive")
+                    eg_j = dp_gaussian_self_energy_excess_j(
+                        mass_kg=total_mass_kg,
+                        separation_m=separation_m,
+                        smearing_radius_m=smearing_radius_m,
+                    )
+                    rows.append(
+                        {
+                            "assumption_label": assumption_label,
+                            "protofilament_count": str(protofilament_count),
+                            "dimers_per_protofilament": str(dimers_per_protofilament),
+                            "helical_start_number": str(helical_start_number),
+                            "coherence_fraction": f"{coherence_fraction:.6f}",
+                            "selected_dimers": str(selected_dimers),
+                            "lattice_radius_m": f"{lattice_radius_m:.6e}",
+                            "lattice_length_m": f"{lattice_length_m:.6e}",
+                            "cloud_rms_radius_m": f"{smearing_radius_m:.6e}",
+                            "separation_m": f"{separation_m:.6e}",
+                            "eg_j": f"{eg_j:.6e}",
+                            "tau_s": f"{collapse_time_s(eg_j):.6e}",
+                            "source_ids": ";".join(source_ids),
+                            "note": note,
+                        }
+                    )
+    return rows
 
 
 def collapse_time_for_domain(

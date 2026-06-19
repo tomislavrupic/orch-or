@@ -15,6 +15,8 @@ from orch_or.geometry import (
     compute_eg_uniform_cylinder,
     compute_eg_uniform_sphere,
     gaussian_smearing_radius_from_cloud,
+    protofilament_lattice_points,
+    protofilament_lattice_sweep_rows,
 )
 
 
@@ -69,6 +71,36 @@ class GeometryTests(unittest.TestCase):
         self.assertGreater(cloud.rms_radius_m(), 0.0)
         self.assertGreater(gaussian_smearing_radius_from_cloud(cloud), 0.0)
         self.assertAlmostEqual(cylinder_mass_density_from_cloud(cloud, 3.0), 1.0)
+
+    def test_protofilament_lattice_points(self) -> None:
+        points = protofilament_lattice_points(
+            DEFAULT_GEOMETRY,
+            protofilament_count=13,
+            dimers_per_protofilament=2,
+            helical_start_number=3,
+        )
+        self.assertEqual(len(points), 26)
+        self.assertAlmostEqual(points[0][2], 0.0)
+        self.assertAlmostEqual(points[13][2], DEFAULT_GEOMETRY.tubulin_length_m)
+
+    def test_protofilament_lattice_sweep_rows(self) -> None:
+        rows = protofilament_lattice_sweep_rows(
+            geometry=DEFAULT_GEOMETRY,
+            protofilament_count_grid=(13,),
+            dimers_per_protofilament_grid=(2,),
+            coherence_fraction_grid=(1.0, 0.5),
+            separation_grid_m=(1.0e-9,),
+            source_ids=(
+                "microtubule_structure_nogales_1998",
+                "microtubule_lattice_nogales_1999",
+                "tubulin_atomic_lowe_2001",
+            ),
+            assumption_label="test_lattice",
+        )
+        self.assertEqual(len(rows), 2)
+        self.assertGreater(float(rows[0]["eg_j"]), 0.0)
+        self.assertGreater(float(rows[0]["tau_s"]), 0.0)
+        self.assertIn("microtubule_lattice_nogales_1999", rows[0]["source_ids"])
 
 
 if __name__ == "__main__":

@@ -23,6 +23,7 @@ It then adds bounded diagnostics for:
 - objective reduction timing proxy `tau`
 - timing margin against a supplied decoherence/noise time
 - Diosi-Penrose threshold sensitivity for tubulin-scale mass assumptions
+- primary-source protofilament lattice geometry proxy
 - critical and supportive decoherence estimate ranges
 - anesthesia-style perturbation predictions
 - Hameroff-facing benchmark summaries for time-crystal, Trp, and anesthesia diagnostics
@@ -51,6 +52,7 @@ PYTHONPATH=src python3 -m orch_or sweep --output examples/output/collapse_time_t
 PYTHONPATH=src python3 -m orch_or thresholds --output examples/output/dp_threshold_table.csv
 PYTHONPATH=src python3 -m orch_or decoherence --output examples/output/decoherence_estimate_table.csv
 PYTHONPATH=src python3 -m orch_or anesthesia --output examples/output/anesthesia_prediction_table.csv
+python3 examples/protofilament_lattice_sweep.py
 python3 examples/hameroff_benchmark.py
 ```
 
