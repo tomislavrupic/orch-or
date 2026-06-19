@@ -81,3 +81,19 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - URL: https://arxiv.org/abs/2602.02868
 - Used for: coherence/coherence-routing diagnostics in tryptophan networks.
 - Boundary: Supports nonclassical correlation flow in cytoskeletal chromophore networks, not Orch-OR validation.
+
+## `halothane_binding_proteome_2008`
+
+- Status: `secondary_trace`
+- Source: Jonathan Z. Pan et al., "Halothane binding proteome in human brain cortex" (2008)
+- URL: not directly fetched in this pass; title recovered from secondary index
+- Used for: halothane binding to tubulin monomers alongside other proteins.
+- Boundary: Keep as a secondary-trace placeholder until the primary article metadata is fetched directly.
+
+## `microtubule_stability_anthracene_2013`
+
+- Status: `secondary_trace`
+- Source: Daniel J. Emerson et al., "Direct Modulation of Microtubule Stability Contributes to Anthracene General Anesthesia" (2013)
+- URL: not directly fetched in this pass; title recovered from secondary index
+- Used for: microtubule-stability perturbation as a possible anesthesia-adjacent effect.
+- Boundary: Does not establish Orch-OR; it only supports microtubule perturbation as a measurable anesthesia-related variable.
