@@ -48,7 +48,7 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - Source: Microtubule structural summary
 - URL: https://en.wikipedia.org/wiki/Microtubule
 - Used for: approximate tubulin dimer mass and 13-protofilament structural defaults.
-- Boundary: Replace with primary structural reviews before promoting these rows to `literature_traced`.
+- Boundary: Retired from executable defaults; primary structural refs now carry the geometry rows.
 
 ## `microtubule_structure_nogales_1998`
 

@@ -113,7 +113,11 @@ DEFAULT_DP_MASS_MODELS: tuple[DPMassModel, ...] = (
         mass_kg=TUBULIN_DIMER_MASS_KG,
         superposition_separation_m=1.0e-10,
         smearing_radius_m=1.0e-10,
-        source_ids=("diosi_2021_collapse_rate", "microtubule_structure_secondary"),
+        source_ids=(
+            "diosi_2021_collapse_rate",
+            "microtubule_structure_nogales_1998",
+            "tubulin_atomic_lowe_2001",
+        ),
         note="Tubulin mass is structural; separation and smearing are explicit sensitivity assumptions.",
     ),
     DPMassModel(
@@ -122,7 +126,11 @@ DEFAULT_DP_MASS_MODELS: tuple[DPMassModel, ...] = (
         mass_kg=TUBULIN_DIMER_MASS_KG,
         superposition_separation_m=1.0e-9,
         smearing_radius_m=1.0e-9,
-        source_ids=("diosi_2021_collapse_rate", "microtubule_structure_secondary"),
+        source_ids=(
+            "diosi_2021_collapse_rate",
+            "microtubule_structure_nogales_1998",
+            "tubulin_atomic_lowe_2001",
+        ),
         note="Nanometer-scale regulator sensitivity row; not an asserted Orch-OR biological value.",
     ),
     DPMassModel(
@@ -135,7 +143,9 @@ DEFAULT_DP_MASS_MODELS: tuple[DPMassModel, ...] = (
             "diosi_2021_collapse_rate",
             "tegmark_2000_decoherence",
             "hagan_2000_decoherence_reply",
-            "microtubule_structure_secondary",
+            "microtubule_structure_nogales_1998",
+            "microtubule_lattice_nogales_1999",
+            "tubulin_atomic_lowe_2001",
         ),
         note="Challenge-scale displacement used as a sensitivity stressor, not as a settled model input.",
     ),
