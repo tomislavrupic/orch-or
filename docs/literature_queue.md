@@ -20,7 +20,7 @@ This file tracks sources that must be traced before toy values become public sci
 
 ## Strong Candidate Primary Structural Sources
 
-These are the next primary sources to trace directly if we want to retire the `microtubule_structure_secondary` placeholder:
+These are the next primary sources to trace directly if we want to finish locking the structural metadata behind the already-wired executable defaults:
 
 - Nogales, Wolf, Downing 1998, "Structure of the alpha beta tubulin dimer by electron crystallography" (Nature).
 - Nogales, Whittaker, Milligan, Downing 1999, "High-resolution model of the microtubule" (Cell).
@@ -32,7 +32,7 @@ These are the next primary sources to trace directly if we want to retire the `m
 - `tegmark_2000_decoherence`: traced enough for the critical decoherence range.
 - `hagan_2000_decoherence_reply`: traced enough for the supportive/contested decoherence ranges.
 - `craddock_2017_anesthetic_thz`: traced enough for direction-of-effect anesthesia perturbation predictions.
-- `microtubule_structure_secondary`: secondary only; replace before treating tubulin geometry as literature-traced.
+- `microtubule_structure_secondary`: secondary only; retained as a historical placeholder, but not used in the current geometry defaults.
 - `microtubule_structure_nogales_1998`, `microtubule_lattice_nogales_1999`, `tubulin_atomic_lowe_2001`: literature pending; use for geometry upgrades once metadata is locked.
 - `anesthesia_counterfactual_untraced`: model assumption only.
 
