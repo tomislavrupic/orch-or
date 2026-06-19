@@ -14,6 +14,8 @@ FIELDNAMES = [
     "lower_s",
     "upper_s",
     "representative_s",
+    "temperature_K",
+    "temperature_scaled_s",
     "target_tau_s",
     "margin_lower_log10",
     "margin_upper_log10",
@@ -25,6 +27,23 @@ FIELDNAMES = [
 
 def representative_time_s(estimate: DecoherenceEstimate) -> float:
     return math.sqrt(estimate.lower_s * estimate.upper_s)
+
+
+def temperature_scaled_decoherence_s(
+    base_time_s: float,
+    temperature_K: float,
+    reference_temperature_K: float = 310.0,
+    exponent: float = 0.5,
+) -> float:
+    if base_time_s <= 0.0:
+        raise ValueError("base_time_s must be positive")
+    if temperature_K <= 0.0:
+        raise ValueError("temperature_K must be positive")
+    if reference_temperature_K <= 0.0:
+        raise ValueError("reference_temperature_K must be positive")
+    if exponent <= 0.0:
+        raise ValueError("exponent must be positive")
+    return base_time_s * (temperature_K / reference_temperature_K) ** exponent
 
 
 def decoherence_rows(
@@ -42,6 +61,10 @@ def decoherence_rows(
                     "lower_s": format_float(estimate.lower_s),
                     "upper_s": format_float(estimate.upper_s),
                     "representative_s": format_float(representative),
+                    "temperature_K": format_float(310.0),
+                    "temperature_scaled_s": format_float(
+                        temperature_scaled_decoherence_s(representative, 310.0)
+                    ),
                     "target_tau_s": format_float(target_tau_s),
                     "margin_lower_log10": format_margin(
                         timing_margin_log10(target_tau_s, estimate.lower_s)
