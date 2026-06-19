@@ -42,6 +42,14 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - Used for: approximate tubulin dimer mass and 13-protofilament structural defaults.
 - Boundary: Replace with primary structural reviews before promoting these rows to `literature_traced`.
 
+## `microtubule_primary_trace_pending`
+
+- Status: `pending_primary_trace`
+- Source: Placeholder for primary structural review
+- URL: not yet traced
+- Used for: eventual replacement of the secondary structural summary.
+- Boundary: Keep the current executable defaults bounded until this row is promoted.
+
 ## `anesthesia_counterfactual_untraced`
 
 - Status: `model_assumption`

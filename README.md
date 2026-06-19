@@ -1,8 +1,11 @@
 # HAOS-OR
 
-**Orch-OR diagnostic bridge for HAOS-IIP style recoverability audits.**
+[![License](https://img.shields.io/badge/license-noncommercial%20research-blue)](LICENSE)
+[![Repo](https://img.shields.io/badge/github-tomislavrupic%2Forch--or-181717?logo=github)](https://github.com/tomislavrupic/orch-or)
 
-This sub repo is a computational scaffold for testing Orch-OR-adjacent timing claims under explicit perturbation. It does not claim that Orch-OR is true, that consciousness is solved, or that toy microtubule models are biologically sufficient.
+**Orch-OR diagnostic bridge for recoverability audits.**
+
+This repo is a bounded computational scaffold for Orch-OR-adjacent timing, decoherence, and perturbation checks. It does not claim that Orch-OR is true, that consciousness is solved, or that toy microtubule models are biologically sufficient.
 
 Layer used: HAOS/OR diagnostic only.
 
@@ -71,11 +74,11 @@ notebooks/                   executable notebook entry points
 
 Rows are explicitly scoped:
 
-- `toy`: code validation only
-- `mixed_assumption`: sourced structure plus explicit model assumptions
-- `critical_assumption`: stress-test values used to challenge the model
-- `supportive_contested`: values asserted in supportive literature but still disputed
-- `model_assumption`: executable perturbation, not a clinical or biological claim
+- `toy`: code validation only.
+- `mixed_assumption`: sourced structure plus explicit model assumptions.
+- `critical_assumption`: stress-test values used to challenge the model.
+- `supportive_contested`: values reported in supportive literature but still disputed.
+- `model_assumption`: executable perturbation, not a clinical or biological claim.
 
 Before any public scientific statement:
 
@@ -83,6 +86,14 @@ Before any public scientific statement:
 2. Record each source in `docs/source_register.md` and `docs/literature_queue.md`.
 3. Run perturbation sweeps and preserve generated artifacts.
 4. Import only bounded metrics into HAOS-IIP.
+
+## Repository Map
+
+- `src/orch_or/`: pure-stdlib diagnostic package.
+- `examples/`: frozen outputs and one-command reproduction.
+- `docs/`: equations, source register, bridge contract, and roadmap.
+- `notebooks/`: executable notebook entry points.
+- `tests/`: dependency-free checks.
 
 ## Key Files
 
