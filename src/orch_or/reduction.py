@@ -2,8 +2,8 @@
 
 This module adds a bounded event-selection layer on top of the existing
 timing and DP helpers. It does not claim to prove consciousness; it
-formalizes a menu of alternatives, a threshold crossing, and the selected
-state for falsification sweeps.
+formalizes a menu of alternatives, a threshold crossing, the selected state,
+and a reduction event for falsification sweeps.
 """
 
 from __future__ import annotations
@@ -17,6 +17,7 @@ from orch_or.sweep import format_float, format_margin
 
 FIELDNAMES = [
     "scenario",
+    "superposition_label",
     "alternative_set",
     "menu_size",
     "mass_distribution_label",
@@ -44,6 +45,7 @@ FIELDNAMES = [
 
 SWEEP_FIELDNAMES = [
     "scenario",
+    "superposition_label",
     "temperature_K",
     "noise_scale",
     "menu_size",
@@ -98,6 +100,24 @@ class ReductionScenario:
             raise ValueError("alternatives must not be empty")
 
 
+@dataclass(frozen=True)
+class TubulinSuperposition:
+    """A bounded menu of tubulin-like alternatives before reduction."""
+
+    scenario: ReductionScenario
+    selection_pressure: float = 1.0
+
+    def __post_init__(self) -> None:
+        if self.selection_pressure <= 0.0:
+            raise ValueError("selection_pressure must be positive")
+
+
+def collective_superposition(scenario: ReductionScenario, selection_pressure: float = 1.0) -> TubulinSuperposition:
+    """Return an explicit tubulin superposition menu for the scenario."""
+
+    return TubulinSuperposition(scenario=scenario, selection_pressure=selection_pressure)
+
+
 def collective_orchestration_score(alternatives: tuple[ReductionAlternative, ...]) -> float:
     if not alternatives:
         raise ValueError("alternatives must not be empty")
@@ -123,10 +143,11 @@ def classical_reference_state(alternatives: tuple[ReductionAlternative, ...]) ->
 
 
 def reduction_event_row(scenario: ReductionScenario, selection_pressure: float = 1.0) -> dict[str, str]:
-    tau_s = collapse_time_s(scenario.self_energy_j)
-    selected = select_state(scenario.alternatives, selection_pressure)
-    classical = classical_reference_state(scenario.alternatives)
-    orchestration_score = collective_orchestration_score(scenario.alternatives)
+    superposition = collective_superposition(scenario, selection_pressure=selection_pressure)
+    tau_s = collapse_time_s(superposition.scenario.self_energy_j)
+    selected = select_state(superposition.scenario.alternatives, superposition.selection_pressure)
+    classical = classical_reference_state(superposition.scenario.alternatives)
+    orchestration_score = collective_orchestration_score(superposition.scenario.alternatives)
     collective_threshold_state = "orchestrated_threshold_crossed" if tau_s <= scenario.decoherence_time_s else "threshold_not_reached"
     timing_correlate = "gamma_phase_lock" if selected.gamma_link_hz >= 60.0 else "subgamma_latency_shift"
     gamma_correlate = "enhanced_gamma_link" if selected.gamma_link_hz >= classical.gamma_link_hz else "gamma_link_suppressed"
@@ -137,6 +158,7 @@ def reduction_event_row(scenario: ReductionScenario, selection_pressure: float =
     )
     return {
         "scenario": scenario.name,
+        "superposition_label": f"{scenario.name}:{len(scenario.alternatives)}_alternatives",
         "alternative_set": ";".join(alt.label for alt in scenario.alternatives),
         "menu_size": str(len(scenario.alternatives)),
         "mass_distribution_label": scenario.mass_distribution_label,
@@ -182,22 +204,24 @@ def reduction_sweep_rows(
     for scenario in scenarios:
         for temperature_K in temperatures_K:
             for noise_scale in noise_scales:
+                superposition = collective_superposition(scenario, selection_pressure=noise_scale)
                 decoherence_time_s = temperature_scaled_decoherence_s(
-                    scenario.decoherence_time_s,
+                    superposition.scenario.decoherence_time_s,
                     temperature_K,
                     exponent=temperature_exponent,
                 ) / noise_scale
-                tau_s = collapse_time_s(scenario.self_energy_j)
-                selected = select_state(scenario.alternatives, selection_pressure=noise_scale)
-                classical = classical_reference_state(scenario.alternatives)
+                tau_s = collapse_time_s(superposition.scenario.self_energy_j)
+                selected = select_state(superposition.scenario.alternatives, selection_pressure=superposition.selection_pressure)
+                classical = classical_reference_state(superposition.scenario.alternatives)
                 rows.append(
                     {
                         "scenario": scenario.name,
+                        "superposition_label": f"{scenario.name}:{len(scenario.alternatives)}_alternatives",
                         "temperature_K": format_float(temperature_K),
                         "noise_scale": format_float(noise_scale),
                         "menu_size": str(len(scenario.alternatives)),
                         "orchestration_score": format_float(
-                            collective_orchestration_score(scenario.alternatives)
+                            collective_orchestration_score(superposition.scenario.alternatives)
                         ),
                         "collective_threshold_state": (
                             "orchestrated_threshold_crossed"
