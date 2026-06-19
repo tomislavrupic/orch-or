@@ -7,7 +7,8 @@
     "decoherence_estimate_table": "decoherence_estimate_table.csv",
     "dp_threshold_table": "dp_threshold_table.csv",
     "geometry_sweep_table": "microtubule_geometry_sweep.csv",
-    "or_decoherence_comparison_table": "or_decoherence_comparison.csv"
+    "or_decoherence_comparison_table": "or_decoherence_comparison.csv",
+    "timing_statistics_table": "timing_statistics_table.csv"
   },
   "claim_boundary": "Diagnostic timing audit only; toy rows are not biological or ontological claims.",
   "coherence_fraction_grid": [
@@ -29,5 +30,7 @@
   "status_counts": {
     "decoherence_preempts_or": 1,
     "or_window_open": 2
-  }
+  },
+  "timing_statistics_rows": 9,
+  "timing_statistics_spread": 0.25
 }

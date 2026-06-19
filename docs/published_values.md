@@ -11,6 +11,7 @@ It is a cross-check, not a claim of biological validity.
 | Microtubule transport | `~6.6 nm` diffusion length | `or_decoherence_comparison.csv` | Geometry-vs-decoherence no OR-favorable islands in current band | Transport is supported, but it does not rescue the current OR timing band. |
 | UV superradiance | `15.7%` to `19.5%` quantum yield | `paper_matrix.md` | `supported_microphysics` row | Supports photophysics, not consciousness. |
 | Anesthetic perturbation | Collective oscillation / transport reduction | `anesthesia_prediction_table.csv` | Frequency-aware perturbation rows | The repo treats this as a bounded diagnostic only. |
+| Timing statistics | Deterministic spread around `tau = 2.5e-2 s` | `timing_statistics_table.csv` | 9 fixed spread samples | This is a pseudo-Monte Carlo harness for reproducible timing sensitivity. |
 
 Repo interpretation:
 

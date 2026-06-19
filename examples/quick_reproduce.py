@@ -21,6 +21,8 @@ from orch_or.haos_contract import build_summary
 from orch_or.sweep import default_rows, write_rows
 from orch_or.thresholds import FIELDNAMES as THRESHOLD_FIELDNAMES
 from orch_or.thresholds import threshold_rows
+from orch_or.statistics import FIELDNAMES as STATISTICS_FIELDNAMES
+from orch_or.statistics import timing_statistics_rows
 
 EXAMPLES = Path(__file__).resolve().parent
 OUTPUT = EXAMPLES / "output"
@@ -30,6 +32,7 @@ GENERATED_DECOHERENCE = OUTPUT / "decoherence_estimate_table.csv"
 GENERATED_ANESTHESIA = OUTPUT / "anesthesia_prediction_table.csv"
 GENERATED_GEOMETRY = OUTPUT / "microtubule_geometry_sweep.csv"
 GENERATED_COMPARISON = OUTPUT / "or_decoherence_comparison.csv"
+GENERATED_STATISTICS = OUTPUT / "timing_statistics_table.csv"
 GENERATED_SUMMARY = OUTPUT / "haos_or_summary.json"
 EXPECTED_TABLE = EXAMPLES / "expected_collapse_time_table.csv"
 EXPECTED_THRESHOLDS = EXAMPLES / "expected_dp_threshold_table.csv"
@@ -37,6 +40,7 @@ EXPECTED_DECOHERENCE = EXAMPLES / "expected_decoherence_estimate_table.csv"
 EXPECTED_ANESTHESIA = EXAMPLES / "expected_anesthesia_prediction_table.csv"
 EXPECTED_GEOMETRY = EXAMPLES / "expected_microtubule_geometry_sweep.csv"
 EXPECTED_COMPARISON = EXAMPLES / "expected_or_decoherence_comparison.csv"
+EXPECTED_STATISTICS = EXAMPLES / "expected_timing_statistics_table.csv"
 EXPECTED_SUMMARY = EXAMPLES / "expected_haos_or_summary.json"
 
 
@@ -67,11 +71,23 @@ def main() -> int:
         assumption_label="primary_trace_candidate",
     )
     comparison = comparison_rows()
+    statistics_rows = timing_statistics_rows(
+        baseline_tau_s=2.5e-2,
+        source_ids=(
+            "diosi_2021_collapse_rate",
+            "hagan_2000_decoherence_reply",
+            "tegmark_2000_decoherence",
+        ),
+        scenario="deterministic_timing_sampler",
+        count=9,
+        spread=0.25,
+    )
     write_rows(GENERATED_THRESHOLDS, dp_rows, THRESHOLD_FIELDNAMES)
     write_rows(GENERATED_DECOHERENCE, decoherence_estimates, DECOHERENCE_FIELDNAMES)
     write_rows(GENERATED_ANESTHESIA, anesthesia_predictions, ANESTHESIA_FIELDNAMES)
     write_rows(GENERATED_GEOMETRY, geometry_rows, GEOMETRY_FIELDNAMES)
     write_rows(GENERATED_COMPARISON, comparison, COMPARISON_FIELDNAMES)
+    write_rows(GENERATED_STATISTICS, statistics_rows, STATISTICS_FIELDNAMES)
 
     summary = build_summary(rows)
     summary["generated_at_utc"] = "FROZEN"
@@ -82,13 +98,16 @@ def main() -> int:
         "anesthesia_prediction_table": GENERATED_ANESTHESIA.name,
         "geometry_sweep_table": GENERATED_GEOMETRY.name,
         "or_decoherence_comparison_table": GENERATED_COMPARISON.name,
+        "timing_statistics_table": GENERATED_STATISTICS.name,
     }
     summary["dp_threshold_rows"] = len(dp_rows)
     summary["decoherence_rows"] = len(decoherence_estimates)
     summary["anesthesia_prediction_rows"] = len(anesthesia_predictions)
     summary["geometry_sweep_rows"] = len(geometry_rows)
     summary["or_decoherence_comparison_rows"] = len(comparison)
+    summary["timing_statistics_rows"] = len(statistics_rows)
     summary["coherence_fraction_grid"] = [1.0, 0.5, 0.1]
+    summary["timing_statistics_spread"] = 0.25
     GENERATED_SUMMARY.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     table_matches = compare_exact(GENERATED_TABLE, EXPECTED_TABLE)
@@ -97,6 +116,7 @@ def main() -> int:
     anesthesia_matches = compare_exact(GENERATED_ANESTHESIA, EXPECTED_ANESTHESIA)
     geometry_matches = compare_exact(GENERATED_GEOMETRY, EXPECTED_GEOMETRY)
     comparison_matches = compare_exact(GENERATED_COMPARISON, EXPECTED_COMPARISON)
+    statistics_matches = compare_exact(GENERATED_STATISTICS, EXPECTED_STATISTICS)
     summary_matches = compare_exact(GENERATED_SUMMARY, EXPECTED_SUMMARY)
     if (
         not table_matches
@@ -105,6 +125,7 @@ def main() -> int:
         or not anesthesia_matches
         or not geometry_matches
         or not comparison_matches
+        or not statistics_matches
         or not summary_matches
     ):
         raise SystemExit(
@@ -115,6 +136,7 @@ def main() -> int:
             f"anesthesia_matches={anesthesia_matches}\n"
             f"geometry_matches={geometry_matches}\n"
             f"comparison_matches={comparison_matches}\n"
+            f"statistics_matches={statistics_matches}\n"
             f"summary_matches={summary_matches}\n"
             f"generated_table={GENERATED_TABLE}\n"
             f"generated_thresholds={GENERATED_THRESHOLDS}\n"
@@ -122,6 +144,7 @@ def main() -> int:
             f"generated_anesthesia={GENERATED_ANESTHESIA}\n"
             f"generated_geometry={GENERATED_GEOMETRY}\n"
             f"generated_comparison={GENERATED_COMPARISON}\n"
+            f"generated_statistics={GENERATED_STATISTICS}\n"
             f"generated_summary={GENERATED_SUMMARY}"
         )
 
@@ -132,10 +155,11 @@ def main() -> int:
     print(f"Anesthesia predictions: {GENERATED_ANESTHESIA}")
     print(f"Geometry sweep: {GENERATED_GEOMETRY}")
     print(f"OR/decoherence comparison: {GENERATED_COMPARISON}")
+    print(f"Timing statistics: {GENERATED_STATISTICS}")
     print(f"Summary: {GENERATED_SUMMARY}")
     print(
         "Statement: tau=hbar/E_G timing diagnostics, DP threshold sensitivity, "
-        "decoherence windows, geometry sweeps, OR/decoherence comparison, and anesthesia perturbation predictions reproduce. "
+        "decoherence windows, geometry sweeps, OR/decoherence comparison, timing statistics, and anesthesia perturbation predictions reproduce. "
         "No biological, consciousness, or ontology claim is introduced."
     )
     return 0

@@ -19,6 +19,8 @@ from orch_or.geometry import (
     compute_eg_uniform_cylinder,
     geometry_sweep_rows,
 )
+from orch_or.statistics import FIELDNAMES as STATISTICS_FIELDNAMES
+from orch_or.statistics import deterministic_jitter_factors, timing_statistics_rows
 from orch_or.parameters import DEFAULT_PARAMETER_SETS, ParameterSet
 
 __all__ = [
@@ -35,6 +37,9 @@ __all__ = [
     "compute_eg_quadrature_validation",
     "compute_eg_uniform_cylinder",
     "geometry_sweep_rows",
+    "STATISTICS_FIELDNAMES",
+    "deterministic_jitter_factors",
+    "timing_statistics_rows",
     "required_self_energy_j",
     "timing_margin_log10",
     "timing_status",
