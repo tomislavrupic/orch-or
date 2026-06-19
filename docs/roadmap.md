@@ -7,6 +7,7 @@ This roadmap keeps the repo small, public, and falsifiable.
 1. Replace the secondary microtubule structural source with a primary structural review.
 2. Add one independently checked anesthesia perturbation row with a traceable source.
 3. Add notebook screenshots or rendered outputs to show the tables in context.
+4. Use [images/The_Quantum_Bioserver_preview.png](../images/The_Quantum_Bioserver_preview.png) as the first figure preview in the repo.
 
 ## Next
 
