@@ -54,6 +54,7 @@ def main() -> int:
     geometry_rows = geometry_sweep_rows(
         geometry=DEFAULT_GEOMETRY,
         coherent_dimers_grid=(1, 13, 130, 1300, 10_000),
+        coherence_fraction_grid=(1.0, 0.5, 0.1),
         separation_grid_m=(1.0e-10, 1.0e-9, 1.0e-8),
         smearing_radius_m=1.0e-9,
         eg_model="gaussian",
@@ -87,6 +88,7 @@ def main() -> int:
     summary["anesthesia_prediction_rows"] = len(anesthesia_predictions)
     summary["geometry_sweep_rows"] = len(geometry_rows)
     summary["or_decoherence_comparison_rows"] = len(comparison)
+    summary["coherence_fraction_grid"] = [1.0, 0.5, 0.1]
     GENERATED_SUMMARY.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     table_matches = compare_exact(GENERATED_TABLE, EXPECTED_TABLE)

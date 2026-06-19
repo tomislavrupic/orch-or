@@ -10,16 +10,21 @@
     "or_decoherence_comparison_table": "or_decoherence_comparison.csv"
   },
   "claim_boundary": "Diagnostic timing audit only; toy rows are not biological or ontological claims.",
+  "coherence_fraction_grid": [
+    1.0,
+    0.5,
+    0.1
+  ],
   "decoherence_rows": 12,
   "dp_threshold_rows": 12,
   "generated_at_utc": "FROZEN",
-  "geometry_sweep_rows": 15,
+  "geometry_sweep_rows": 45,
   "haos_import_hint": {
     "collapse_definition": "loss of timing-window recoverability under perturbation",
     "metric": "timing_margin_log10",
     "perturbation_axis": "self_energy_or_decoherence_time"
   },
-  "or_decoherence_comparison_rows": 24,
+  "or_decoherence_comparison_rows": 72,
   "row_count": 3,
   "status_counts": {
     "decoherence_preempts_or": 1,

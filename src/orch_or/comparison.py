@@ -10,6 +10,7 @@ from orch_or.geometry import DEFAULT_GEOMETRY, geometry_sweep_rows
 FIELDNAMES = [
     "comparison",
     "coherent_dimers",
+    "coherence_fraction",
     "separation_m",
     "eg_model",
     "eg_j",
@@ -28,6 +29,7 @@ def comparison_rows() -> list[dict[str, str]]:
     geometry_rows = geometry_sweep_rows(
         geometry=DEFAULT_GEOMETRY,
         coherent_dimers_grid=(13, 130, 1300, 10_000),
+        coherence_fraction_grid=(1.0, 0.5, 0.1),
         separation_grid_m=(1.0e-9, 1.0e-8),
         smearing_radius_m=1.0e-9,
         eg_model="gaussian",
@@ -50,6 +52,7 @@ def comparison_rows() -> list[dict[str, str]]:
                 {
                     "comparison": "geometry_vs_decoherence",
                     "coherent_dimers": geometry_row["coherent_dimers"],
+                    "coherence_fraction": geometry_row["coherence_fraction"],
                     "separation_m": geometry_row["separation_m"],
                     "eg_model": geometry_row["eg_model"],
                     "eg_j": geometry_row["eg_j"],
