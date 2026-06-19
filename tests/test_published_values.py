@@ -14,6 +14,9 @@ class PublishedValuesTests(unittest.TestCase):
         self.assertIn("Hagan/Hameroff/Tuszynski reply", text)
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("docs/published_values.md", readme)
+        notebook = (ROOT / "notebooks" / "03_microtubule_geometry.ipynb").read_text(encoding="utf-8")
+        self.assertIn("Published-value comparison note", notebook)
+        self.assertIn("matplotlib", notebook)
 
 
 if __name__ == "__main__":
