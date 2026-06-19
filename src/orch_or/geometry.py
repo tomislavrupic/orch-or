@@ -135,6 +135,33 @@ def compute_eg_quadrature_validation(
     return dp_point_mass_far_field_self_energy_j(mass, separation_m)
 
 
+def compute_eg_diosi_regularized(
+    geometry: MicrotubuleGeometry,
+    coherent_dimers: int,
+    separation_m: float,
+    smearing_radius_m: float,
+) -> float:
+    """Return a conservative Diósi-style regularized proxy.
+
+    This is a bounded diagnostic variant that keeps the same Gaussian regulator
+    but softens the shortest-distance behavior a little more aggressively.
+    """
+
+    if coherent_dimers <= 0:
+        raise ValueError("coherent_dimers must be positive")
+    if separation_m <= 0.0:
+        raise ValueError("separation_m must be positive")
+    if smearing_radius_m <= 0.0:
+        raise ValueError("smearing_radius_m must be positive")
+    mass = coherence_domain_mass_kg(geometry, coherent_dimers)
+    softened_separation = max(separation_m, smearing_radius_m * 0.5)
+    return dp_gaussian_self_energy_excess_j(
+        mass_kg=mass,
+        separation_m=softened_separation,
+        smearing_radius_m=smearing_radius_m,
+    )
+
+
 def collapse_time_for_domain(
     geometry: MicrotubuleGeometry,
     coherent_dimers: int,
@@ -148,6 +175,8 @@ def collapse_time_for_domain(
         eg = compute_eg_uniform_cylinder(geometry, coherent_dimers, separation_m)
     elif eg_model == "quadrature":
         eg = compute_eg_quadrature_validation(geometry, coherent_dimers, separation_m)
+    elif eg_model == "diosi_regularized":
+        eg = compute_eg_diosi_regularized(geometry, coherent_dimers, separation_m, smearing_radius_m)
     else:
         raise ValueError(f"unknown eg_model {eg_model!r}")
     return eg, collapse_time_s(eg)

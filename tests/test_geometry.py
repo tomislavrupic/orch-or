@@ -7,6 +7,7 @@ from orch_or.geometry import (
     collapse_time_for_domain,
     coherence_domain_mass_kg,
     compute_eg_gaussian_pair,
+    compute_eg_diosi_regularized,
     compute_eg_quadrature_validation,
     compute_eg_uniform_cylinder,
 )
@@ -27,11 +28,14 @@ class GeometryTests(unittest.TestCase):
         gaussian = compute_eg_gaussian_pair(DEFAULT_GEOMETRY, 13, 1.0e-9, 1.0e-9)
         cylinder = compute_eg_uniform_cylinder(DEFAULT_GEOMETRY, 13, 1.0e-9)
         quadrature = compute_eg_quadrature_validation(DEFAULT_GEOMETRY, 13, 1.0e-9)
+        diosi = compute_eg_diosi_regularized(DEFAULT_GEOMETRY, 13, 1.0e-9, 1.0e-9)
         self.assertNotEqual(gaussian, cylinder)
         self.assertNotEqual(cylinder, quadrature)
         self.assertGreater(gaussian, 0.0)
         self.assertGreater(cylinder, 0.0)
         self.assertGreater(quadrature, 0.0)
+        self.assertGreater(diosi, 0.0)
+        self.assertLessEqual(diosi, gaussian)
 
     def test_collapse_helper_returns_energy_and_time(self) -> None:
         eg_j, tau_s = collapse_time_for_domain(
