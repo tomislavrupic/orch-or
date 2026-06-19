@@ -102,6 +102,7 @@ Before any public scientific statement:
 - [docs/paper_matrix.md](docs/paper_matrix.md): what survives the primary-paper pass.
 - [docs/discriminating_tests.md](docs/discriminating_tests.md): model comparison and test ideas.
 - [docs/or_necessity.md](docs/or_necessity.md): the OR-on versus OR-off comparison artifact.
+- [docs/published_values.md](docs/published_values.md): compact comparison against published values and ranges.
 - [docs/haos_iip_bridge_contract.md](docs/haos_iip_bridge_contract.md): HAOS-IIP import contract.
 - [notebooks/01_dp_thresholds.ipynb](notebooks/01_dp_thresholds.ipynb): threshold table walkthrough.
 - [notebooks/02_decoherence_anesthesia.ipynb](notebooks/02_decoherence_anesthesia.ipynb): decoherence and anesthesia prediction walkthrough.

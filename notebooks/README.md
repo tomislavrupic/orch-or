@@ -17,4 +17,9 @@ Executable notebook path:
    - sweep coherent domain size and dimer separation
    - keep the structural source trail explicit
 
+Comparison note:
+- `docs/published_values.md`
+  - summarizes how the frozen outputs line up with the cited paper ranges
+  - keeps the comparison explicit instead of burying it in narrative prose
+
 Run notebooks from the repo root or keep the first cell's `sys.path` setup intact.
