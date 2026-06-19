@@ -1,0 +1,4 @@
+frequency_hz,conductance,source_id,notes
+6.13e14,1.0,Craddock2017,Ultraviolet-scale resonance peak used as a proxy for collective oscillation comparisons.
+6.0e10,0.4,Craddock2017,Lower-frequency exploratory band for multiscale sweeps.
+4.0e13,0.7,Craddock2017,THz-band comparison row for coarse spectrum binning.

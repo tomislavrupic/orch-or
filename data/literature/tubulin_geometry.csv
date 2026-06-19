@@ -1,0 +1,6 @@
+parameter,value,uncertainty,unit,source_id,notes
+tubulins_per_neuron,1.0e9,2.0e8,,Hameroff2014,Order-of-magnitude cortical neuron estimate used as a literature-anchored registry row.
+protofilaments,13,0,,Nogales1999,Canonical protofilament count used by the lattice defaults.
+tubulin_dimer_length,8.0,0.2,nm,Lowe2001,Alpha-beta dimer axial length.
+mt_outer_diameter,25.0,1.0,nm,Nogales1999,Microtubule outer diameter.
+mt_inner_diameter,15.0,1.0,nm,Nogales1999,Microtubule inner diameter.

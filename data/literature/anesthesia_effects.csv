@@ -1,0 +1,4 @@
+perturbation,value,unit,source_id,notes
+volatile_anesthetic_mild,0.5,relative_threshold,Craddock2017,Mild proxy for reduced OR window.
+volatile_anesthetic_strong,0.1,relative_threshold,Craddock2017,Strong stress-test proxy for OR suppression.
+microtubule_stabilizer_counterfactual,2.0,relative_threshold,Hameroff2014,Counterfactual rescue-style perturbation placeholder.

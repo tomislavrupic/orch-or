@@ -32,6 +32,8 @@ It then adds bounded diagnostics for:
 
 The result is a timing audit, not an ontology.
 
+For a traceable literature layer, see `src/orch_or/data.py` and `data/literature/`.
+
 ## Quick Start
 
 From this repo root:

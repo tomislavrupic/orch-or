@@ -1,0 +1,37 @@
+{
+  "Hameroff2014": {
+    "short": "Hameroff & Penrose 2014",
+    "doi": "10.1016/j.plrev.2013.08.002",
+    "url": "https://doi.org/10.1016/j.plrev.2013.08.002"
+  },
+  "Craddock2017": {
+    "short": "Craddock et al. 2017",
+    "doi": "10.1038/s41598-017-09992-7",
+    "url": "https://www.nature.com/articles/s41598-017-09992-7"
+  },
+  "Tegmark2000": {
+    "short": "Tegmark 2000",
+    "doi": "10.1103/PhysRevE.61.4194",
+    "url": "https://arxiv.org/abs/quant-ph/9907009"
+  },
+  "Hagan2000": {
+    "short": "Hagan et al. 2000",
+    "doi": "10.1103/PhysRevE.65.061901",
+    "url": "https://arxiv.org/abs/quant-ph/0005025"
+  },
+  "Nogales1998": {
+    "short": "Nogales et al. 1998",
+    "doi": "10.1038/34465",
+    "url": "https://doi.org/10.1038/34465"
+  },
+  "Nogales1999": {
+    "short": "Nogales et al. 1999",
+    "doi": "10.1016/S0092-8674(00)80961-7",
+    "url": "https://doi.org/10.1016/S0092-8674(00)80961-7"
+  },
+  "Lowe2001": {
+    "short": "Lowe et al. 2001",
+    "doi": "10.1006/jmbi.2001.5077",
+    "url": "https://doi.org/10.1006/jmbi.2001.5077"
+  }
+}
