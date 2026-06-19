@@ -53,6 +53,15 @@ SOURCE_REGISTRY: dict[str, Source] = {
         status="literature_traced",
         usage="Anesthetic perturbation direction for tubulin collective-oscillation predictions.",
     ),
+    "microtubule_energy_transport_kalra_2022": Source(
+        source_id="microtubule_energy_transport_kalra_2022",
+        title="Electronic Energy Migration in Microtubules",
+        authors="A. P. Kalra et al.",
+        year=2022,
+        url="https://arxiv.org/abs/2208.10628",
+        status="literature_traced",
+        usage="Microtubule exciton transport and anesthetic reduction of diffusion length.",
+    ),
     "microtubule_structure_secondary": Source(
         source_id="microtubule_structure_secondary",
         title="Microtubule structural summary",

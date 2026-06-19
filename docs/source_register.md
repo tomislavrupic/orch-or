@@ -34,6 +34,14 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - Used for: direction-of-effect anesthesia perturbation predictions.
 - Boundary: The executable model does not reproduce the paper's molecular simulation or clinical potency analysis.
 
+## `microtubule_energy_transport_kalra_2022`
+
+- Status: `literature_traced`
+- Source: A. P. Kalra et al., "Electronic Energy Migration in Microtubules" (2022)
+- URL: https://arxiv.org/abs/2208.10628
+- Used for: microtubule exciton transport, diffusion length, anesthetic reduction of transport, and protofilament-count robustness checks.
+- Boundary: This supports transport and photophysics diagnostics, not a consciousness claim.
+
 ## `microtubule_structure_secondary`
 
 - Status: `secondary_trace`

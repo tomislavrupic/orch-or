@@ -5,7 +5,9 @@
     "anesthesia_prediction_table": "anesthesia_prediction_table.csv",
     "collapse_time_table": "collapse_time_table.csv",
     "decoherence_estimate_table": "decoherence_estimate_table.csv",
-    "dp_threshold_table": "dp_threshold_table.csv"
+    "dp_threshold_table": "dp_threshold_table.csv",
+    "geometry_sweep_table": "microtubule_geometry_sweep.csv",
+    "or_decoherence_comparison_table": "or_decoherence_comparison.csv"
   },
   "claim_boundary": "Diagnostic timing audit only; toy rows are not biological or ontological claims.",
   "decoherence_rows": 12,
@@ -17,6 +19,7 @@
     "metric": "timing_margin_log10",
     "perturbation_axis": "self_energy_or_decoherence_time"
   },
+  "or_decoherence_comparison_rows": 24,
   "row_count": 3,
   "status_counts": {
     "decoherence_preempts_or": 1,
