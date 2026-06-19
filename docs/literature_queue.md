@@ -17,6 +17,7 @@ This file tracks sources that must be traced before toy values become public sci
 5. Contemporary microtubule/tubulin structural parameter references.
 6. Anesthesia perturbation models relevant to tubulin or microtubule dynamics.
 7. Primary structural references for the microtubule lattice and alpha/beta tubulin dimer.
+8. Time-crystal and multiscale microtubule oscillation references linked to the current Hameroff emphasis.
 
 ## Strong Candidate Primary Structural Sources
 
@@ -25,6 +26,13 @@ These are the next primary sources to trace directly if we want to finish lockin
 - Nogales, Wolf, Downing 1998, "Structure of the alpha beta tubulin dimer by electron crystallography" (Nature).
 - Nogales, Whittaker, Milligan, Downing 1999, "High-resolution model of the microtubule" (Cell).
 - Lowe, Li, Downing, Nogales 2001, "Refined structure of alpha beta-tubulin at 3.5 A resolution" (Journal of Molecular Biology).
+
+## Time-Crystal Source Targets
+
+These are placeholders for the current time-crystal/multiscale oscillation workstream until the primary citations are locked:
+
+- Hameroff 2026 time-crystal paper referenced in current discussions.
+- Bandyopadhyay experimental microtubule resonance work referenced in current discussions.
 
 ## Currently Wired Source IDs
 
@@ -35,6 +43,7 @@ These are the next primary sources to trace directly if we want to finish lockin
 - `microtubule_structure_secondary`: secondary only; retained as a historical placeholder, but not used in the current geometry defaults.
 - `microtubule_structure_nogales_1998`, `microtubule_lattice_nogales_1999`, `tubulin_atomic_lowe_2001`: literature pending; use for geometry upgrades once metadata is locked.
 - `anesthesia_counterfactual_untraced`: model assumption only.
+- `hameroff_time_crystal_2026`, `bandyopadhyay_multiscale_resonance`: model assumptions tied to the current notebook roadmap; keep as placeholders until the primary papers are locked.
 
 See `docs/source_register.md` for URLs and usage boundaries.
 

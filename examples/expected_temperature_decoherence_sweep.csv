@@ -1,0 +1,16 @@
+estimate,stance,temperature_K,reference_temperature_K,exponent,representative_s,temperature_scaled_s,source_ids,note
+tegmark_microtubule_critical,critical,2.800000e+02,3.100000e+02,5.000000e-01,3.162278e-17,3.005372e-17,tegmark_2000_decoherence,Tegmark's critical brain/microtubule decoherence range.
+tegmark_microtubule_critical,critical,3.100000e+02,3.100000e+02,5.000000e-01,3.162278e-17,3.162278e-17,tegmark_2000_decoherence,Tegmark's critical brain/microtubule decoherence range.
+tegmark_microtubule_critical,critical,3.500000e+02,3.100000e+02,5.000000e-01,3.162278e-17,3.360108e-17,tegmark_2000_decoherence,Tegmark's critical brain/microtubule decoherence range.
+hagan_corrected_orch_or,supportive_contested,2.800000e+02,3.100000e+02,5.000000e-01,3.162278e-05,3.005372e-05,hagan_2000_decoherence_reply,Hagan/Hameroff/Tuszynski corrected estimate range.
+hagan_corrected_orch_or,supportive_contested,3.100000e+02,3.100000e+02,5.000000e-01,3.162278e-05,3.162278e-05,hagan_2000_decoherence_reply,Hagan/Hameroff/Tuszynski corrected estimate range.
+hagan_corrected_orch_or,supportive_contested,3.500000e+02,3.100000e+02,5.000000e-01,3.162278e-05,3.360108e-05,hagan_2000_decoherence_reply,Hagan/Hameroff/Tuszynski corrected estimate range.
+hagan_actin_gel_extension,supportive_contested,2.800000e+02,3.100000e+02,5.000000e-01,3.162278e-02,3.005372e-02,hagan_2000_decoherence_reply,Additional actin-gel enhancement range asserted by Hagan/Hameroff/Tuszynski.
+hagan_actin_gel_extension,supportive_contested,3.100000e+02,3.100000e+02,5.000000e-01,3.162278e-02,3.162278e-02,hagan_2000_decoherence_reply,Additional actin-gel enhancement range asserted by Hagan/Hameroff/Tuszynski.
+hagan_actin_gel_extension,supportive_contested,3.500000e+02,3.100000e+02,5.000000e-01,3.162278e-02,3.360108e-02,hagan_2000_decoherence_reply,Additional actin-gel enhancement range asserted by Hagan/Hameroff/Tuszynski.
+ion_collision_damping_proxy,model_assumption,2.800000e+02,3.100000e+02,5.000000e-01,1.000000e-13,9.503819e-14,microtubule_energy_transport_kalra_2022,Proxy for ion-collision or solvent-scattering damping; bounded sensitivity row only.
+ion_collision_damping_proxy,model_assumption,3.100000e+02,3.100000e+02,5.000000e-01,1.000000e-13,1.000000e-13,microtubule_energy_transport_kalra_2022,Proxy for ion-collision or solvent-scattering damping; bounded sensitivity row only.
+ion_collision_damping_proxy,model_assumption,3.500000e+02,3.100000e+02,5.000000e-01,1.000000e-13,1.062559e-13,microtubule_energy_transport_kalra_2022,Proxy for ion-collision or solvent-scattering damping; bounded sensitivity row only.
+water_map_protection_proxy,model_assumption,2.800000e+02,3.100000e+02,5.000000e-01,3.162278e-03,3.005372e-03,microtubule_energy_transport_kalra_2022,Proxy for ordered-water or MAP-protected coherence; bounded sensitivity row only.
+water_map_protection_proxy,model_assumption,3.100000e+02,3.100000e+02,5.000000e-01,3.162278e-03,3.162278e-03,microtubule_energy_transport_kalra_2022,Proxy for ordered-water or MAP-protected coherence; bounded sensitivity row only.
+water_map_protection_proxy,model_assumption,3.500000e+02,3.100000e+02,5.000000e-01,3.162278e-03,3.360108e-03,microtubule_energy_transport_kalra_2022,Proxy for ordered-water or MAP-protected coherence; bounded sensitivity row only.

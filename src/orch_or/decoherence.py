@@ -24,6 +24,18 @@ FIELDNAMES = [
     "note",
 ]
 
+TEMPERATURE_SWEEP_FIELDNAMES = [
+    "estimate",
+    "stance",
+    "temperature_K",
+    "reference_temperature_K",
+    "exponent",
+    "representative_s",
+    "temperature_scaled_s",
+    "source_ids",
+    "note",
+]
+
 
 def representative_time_s(estimate: DecoherenceEstimate) -> float:
     return math.sqrt(estimate.lower_s * estimate.upper_s)
@@ -73,6 +85,39 @@ def decoherence_rows(
                         timing_margin_log10(target_tau_s, estimate.upper_s)
                     ),
                     "representative_status": timing_status(target_tau_s, representative),
+                    "source_ids": ";".join(estimate.source_ids),
+                    "note": estimate.note,
+                }
+            )
+    return rows
+
+
+def temperature_sweep_rows(
+    estimates: tuple[DecoherenceEstimate, ...] = DEFAULT_DECOHERENCE_ESTIMATES,
+    temperatures_K: tuple[float, ...] = (280.0, 310.0, 350.0),
+    reference_temperature_K: float = 310.0,
+    exponent: float = 0.5,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for estimate in estimates:
+        representative = representative_time_s(estimate)
+        for temperature_K in temperatures_K:
+            rows.append(
+                {
+                    "estimate": estimate.name,
+                    "stance": estimate.stance,
+                    "temperature_K": format_float(temperature_K),
+                    "reference_temperature_K": format_float(reference_temperature_K),
+                    "exponent": format_float(exponent),
+                    "representative_s": format_float(representative),
+                    "temperature_scaled_s": format_float(
+                        temperature_scaled_decoherence_s(
+                            representative,
+                            temperature_K,
+                            reference_temperature_K=reference_temperature_K,
+                            exponent=exponent,
+                        )
+                    ),
                     "source_ids": ";".join(estimate.source_ids),
                     "note": estimate.note,
                 }

@@ -117,6 +117,24 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 - Used for: coherence/coherence-routing diagnostics in tryptophan networks.
 - Boundary: Supports nonclassical correlation flow in cytoskeletal chromophore networks, not Orch-OR validation.
 
+## `hameroff_time_crystal_2026`
+
+- Status: `model_assumption`
+- Source: Stuart Hameroff, "Microtubules as time crystals and multiscale oscillators" (working placeholder for the current repo roadmap)
+- URL: docs/literature_queue.md
+- Used for: time-crystal and multiscale oscillation diagnostics.
+- Boundary: Keep as a roadmap-linked placeholder until the primary paper citation is locked.
+- Metadata gap: lock the primary paper citation and publication venue.
+
+## `bandyopadhyay_multiscale_resonance`
+
+- Status: `model_assumption`
+- Source: Anirban Bandyopadhyay, "Experimental multiscale microtubule resonances" (working placeholder for the current repo roadmap)
+- URL: docs/literature_queue.md
+- Used for: experimental resonance proxy for multiscale oscillation diagnostics.
+- Boundary: Keep as a roadmap-linked placeholder until the primary experimental citation is locked.
+- Metadata gap: lock the direct experimental citation and publication venue.
+
 ## `halothane_binding_proteome_2008`
 
 - Status: `secondary_trace`

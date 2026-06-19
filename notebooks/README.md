@@ -17,6 +17,11 @@ Executable notebook path:
    - sweep coherent domain size and dimer separation
    - keep the structural source trail explicit
 
+4. `04_time_crystals_multiscale.ipynb`
+   - model microtubules as time-crystal-like multiscale oscillators
+   - sweep kHz to THz modes and beat-frequency proxies
+   - keep the source placeholders explicit until the primary citations are locked
+
 Comparison note:
 - `docs/published_values.md`
   - summarizes how the frozen outputs line up with the cited paper ranges
