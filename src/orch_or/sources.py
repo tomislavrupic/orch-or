@@ -1,4 +1,4 @@
-"""Traceable source registry for HAOS-OR diagnostics."""
+"""Traceable source registry for Orch-OR diagnostics."""
 
 from __future__ import annotations
 
@@ -152,7 +152,7 @@ SOURCE_REGISTRY: dict[str, Source] = {
     "anesthesia_counterfactual_untraced": Source(
         source_id="anesthesia_counterfactual_untraced",
         title="Counterfactual microtubule-stabilization perturbation",
-        authors="HAOS-OR model assumption",
+        authors="Orch-OR model assumption",
         year=2026,
         url="docs/literature_queue.md",
         status="model_assumption",

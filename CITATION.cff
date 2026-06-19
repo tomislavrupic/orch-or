@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "HAOS-OR: Orch-OR Diagnostic Bridge"
+title: "Orch-OR Diagnostic Bridge"
 message: "If you use this diagnostic scaffold, cite the repository and preserve claim boundaries."
 type: software
 authors:
@@ -7,4 +7,4 @@ authors:
     given-names: "Tomislav"
 year: 2026
 version: "0.1.0"
-license: "LicenseRef-HAOS-OR-NonCommercial-Research"
+license: "LicenseRef-Orch-OR-NonCommercial-Research"

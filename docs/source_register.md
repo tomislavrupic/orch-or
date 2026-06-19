@@ -88,7 +88,7 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 ## `anesthesia_counterfactual_untraced`
 
 - Status: `model_assumption`
-- Source: HAOS-OR counterfactual row
+- Source: Orch-OR counterfactual row
 - URL: literature queue in this repo
 - Used for: executable microtubule-stabilizer rescue prediction placeholder.
 - Boundary: Not evidence. It is a hypothesis row waiting for source tracing.

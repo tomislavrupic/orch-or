@@ -1,7 +1,7 @@
 # AGENTS.md
 
 - This repo is an Orch-OR diagnostic bridge, not an Orch-OR endorsement.
-- Keep HAOS first: every claim must be recoverable under perturbation or labeled symbolic/toy.
+- Keep the audit boundary first: every claim must be recoverable under perturbation or labeled symbolic/toy.
 - Do not claim solved consciousness, physical proof, or biological validity from toy parameters.
 - Prefer deterministic, pure functions and JSON/CSV outputs.
 - Parameter sets must name their scope: `toy`, `literature_pending`, or `literature_traced`.

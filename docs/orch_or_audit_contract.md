@@ -1,11 +1,11 @@
-# HAOS-IIP Bridge Contract
+# Orch-OR Audit Contract
 
-This contract defines the first safe import surface from HAOS-OR into HAOS-IIP.
+This contract defines the public audit surface for Orch-OR diagnostic artifacts.
 
 ## Artifact
 
 ```text
-artifact_kind: haos_or_timing_ladder_v0
+artifact_kind: orch_or_timing_ladder_v0
 ```
 
 The artifact summarizes timing-window recoverability under a parameter set.
@@ -68,9 +68,9 @@ Summary JSON must include:
 - `claim_boundary`
 - `row_count`
 - `status_counts`
-- `haos_import_hint`
+- `audit_hint`
 
-## HAOS Interpretation
+## Audit Interpretation
 
 `timing_margin_log10 = log10(decoherence_time / tau)`
 
@@ -88,4 +88,4 @@ Proof of Orch-OR, proof of quantum consciousness, or proof of biological impleme
 
 ## Next Integration Step
 
-Add a HAOS-IIP sidecar importer that reads the CSV and treats `timing_margin_log10` as a bounded diagnostic metric beside existing recoverability telemetry.
+Add optional downstream readers that treat `timing_margin_log10` as a bounded diagnostic metric, not as proof of biological implementation.

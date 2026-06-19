@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "haos-or"
+name = "orch-or"
 version = "0.1.0"
-description = "Orch-OR diagnostic bridge for HAOS-IIP style recoverability audits."
+description = "Orch-OR diagnostic bridge for bounded timing, decoherence, and perturbation audits."
 requires-python = ">=3.11"
 dependencies = []
 

@@ -17,7 +17,7 @@ class ReproductionTests(unittest.TestCase):
         self.assertEqual(quick_reproduce.main(), 0)
 
     def test_expected_summary_is_bounded(self) -> None:
-        summary = json.loads((ROOT / "examples" / "expected_haos_or_summary.json").read_text(encoding="utf-8"))
+        summary = json.loads((ROOT / "examples" / "expected_orch_or_summary.json").read_text(encoding="utf-8"))
         self.assertIn("toy rows are not biological", summary["claim_boundary"])
 
 

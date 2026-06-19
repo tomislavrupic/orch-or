@@ -1,4 +1,4 @@
-"""HAOS-OR Orch-OR diagnostic bridge."""
+"""Orch-OR diagnostic bridge."""
 
 from orch_or.collapse import (
     collapse_time_s,

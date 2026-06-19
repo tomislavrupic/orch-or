@@ -1,4 +1,4 @@
-"""Command-line interface for HAOS-OR."""
+"""Command-line interface for Orch-OR diagnostics."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from orch_or.anesthesia import anesthesia_prediction_rows
 from orch_or.collapse import collapse_time_s, required_self_energy_j
 from orch_or.decoherence import FIELDNAMES as DECOHERENCE_FIELDNAMES
 from orch_or.decoherence import decoherence_rows
-from orch_or.haos_contract import build_summary
+from orch_or.audit_summary import build_summary
 from orch_or.sweep import default_rows, write_rows
 from orch_or.thresholds import FIELDNAMES as THRESHOLD_FIELDNAMES
 from orch_or.thresholds import threshold_rows
@@ -70,7 +70,7 @@ def _cmd_reproduce(_args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="HAOS-OR Orch-OR diagnostic bridge")
+    parser = argparse.ArgumentParser(description="Orch-OR diagnostic bridge")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     collapse = subparsers.add_parser("collapse", help="compute tau=hbar/E_G or the inverse")

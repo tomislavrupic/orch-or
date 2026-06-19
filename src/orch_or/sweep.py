@@ -1,4 +1,4 @@
-"""Deterministic sweep helpers for HAOS-OR."""
+"""Deterministic sweep helpers for Orch-OR diagnostics."""
 
 from __future__ import annotations
 

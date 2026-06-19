@@ -1,4 +1,4 @@
-# HAOS-OR
+# Orch-OR
 
 [![License](https://img.shields.io/badge/license-noncommercial%20research-blue)](LICENSE)
 [![Repo](https://img.shields.io/badge/github-tomislavrupic%2Forch--or-181717?logo=github)](https://github.com/tomislavrupic/orch-or)
@@ -7,7 +7,7 @@
 
 This repo is a bounded computational scaffold for Orch-OR-adjacent timing, decoherence, and perturbation checks. It does not claim that Orch-OR is true, that consciousness is solved, or that toy microtubule models are biologically sufficient.
 
-Layer used: HAOS/OR diagnostic only.
+Layer used: Orch-OR diagnostic only.
 
 ## Scope
 
@@ -87,7 +87,7 @@ Before any public scientific statement:
 1. Replace or add parameter sets with source-traced values.
 2. Record each source in `docs/source_register.md` and `docs/literature_queue.md`.
 3. Run perturbation sweeps and preserve generated artifacts.
-4. Import only bounded metrics into HAOS-IIP.
+4. Publish only bounded metrics and keep downstream imports optional.
 
 ## Repository Map
 
@@ -105,7 +105,7 @@ Before any public scientific statement:
 - [docs/discriminating_tests.md](docs/discriminating_tests.md): model comparison and test ideas.
 - [docs/or_necessity.md](docs/or_necessity.md): the OR-on versus OR-off comparison artifact.
 - [docs/published_values.md](docs/published_values.md): compact comparison against published values and ranges.
-- [docs/haos_iip_bridge_contract.md](docs/haos_iip_bridge_contract.md): HAOS-IIP import contract.
+- [docs/orch_or_audit_contract.md](docs/orch_or_audit_contract.md): Orch-OR audit artifact contract.
 - [notebooks/01_dp_thresholds.ipynb](notebooks/01_dp_thresholds.ipynb): threshold table walkthrough.
 - [notebooks/02_decoherence_anesthesia.ipynb](notebooks/02_decoherence_anesthesia.ipynb): decoherence and anesthesia prediction walkthrough.
 - [notebooks/03_microtubule_geometry.ipynb](notebooks/03_microtubule_geometry.ipynb): geometry and `E_G` model comparison walkthrough.
@@ -116,7 +116,7 @@ Before any public scientific statement:
 
 ![The Quantum Bioserver preview](images/The_Quantum_Bioserver_preview.png)
 
-## Minimal HAOS Test
+## Minimal Orch-OR Audit
 
 Claim or task:
 Build a reproducible Orch-OR timing diagnostic.

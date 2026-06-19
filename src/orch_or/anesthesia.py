@@ -1,4 +1,4 @@
-"""Anesthesia perturbation predictions for HAOS-OR."""
+"""Anesthesia perturbation predictions for Orch-OR diagnostics."""
 
 from __future__ import annotations
 

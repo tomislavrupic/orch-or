@@ -22,6 +22,6 @@ This roadmap keeps the repo small, public, and falsifiable.
 
 ## Later
 
-1. Add a small importer for the HAOS-IIP sidecar format.
+1. Add a small downstream importer for the frozen Orch-OR artifact format.
 2. Add issue links from notebook cells once the first review cycle settles.
 3. Replace the placeholder anesthesia counterfactual row with a traced perturbation.

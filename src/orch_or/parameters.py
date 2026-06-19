@@ -1,4 +1,4 @@
-"""Parameter sets for the first HAOS-OR timing spine."""
+"""Parameter sets for the first Orch-OR timing spine."""
 
 from __future__ import annotations
 

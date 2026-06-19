@@ -1,6 +1,6 @@
 {
   "anesthesia_prediction_rows": 3,
-  "artifact_kind": "haos_or_timing_ladder_v0",
+  "artifact_kind": "orch_or_timing_ladder_v0",
   "artifact_tables": {
     "anesthesia_prediction_table": "anesthesia_prediction_table.csv",
     "collapse_time_table": "collapse_time_table.csv",
@@ -13,6 +13,11 @@
     "timing_statistics_table": "timing_statistics_table.csv",
     "trp_superradiance_table": "trp_superradiance_table.csv"
   },
+  "audit_hint": {
+    "collapse_definition": "loss of timing-window recoverability under perturbation",
+    "metric": "timing_margin_log10",
+    "perturbation_axis": "self_energy_or_decoherence_time"
+  },
   "claim_boundary": "Diagnostic timing audit only; toy rows are not biological or ontological claims.",
   "coherence_fraction_grid": [
     1.0,
@@ -24,11 +29,6 @@
   "generated_at_utc": "FROZEN",
   "geometry_sweep_rows": 135,
   "hameroff_benchmark_rows": 6,
-  "haos_import_hint": {
-    "collapse_definition": "loss of timing-window recoverability under perturbation",
-    "metric": "timing_margin_log10",
-    "perturbation_axis": "self_energy_or_decoherence_time"
-  },
   "or_decoherence_comparison_rows": 360,
   "protofilament_count_grid": [
     1,

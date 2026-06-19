@@ -19,7 +19,7 @@ from orch_or.decoherence import temperature_sweep_rows
 from orch_or.comparison import FIELDNAMES as COMPARISON_FIELDNAMES
 from orch_or.comparison import comparison_rows
 from orch_or.geometry import DEFAULT_GEOMETRY, FIELDNAMES as GEOMETRY_FIELDNAMES, geometry_sweep_rows
-from orch_or.haos_contract import build_summary
+from orch_or.audit_summary import build_summary
 from orch_or.hameroff_benchmark import FIELDNAMES as HAMEROFF_FIELDNAMES
 from orch_or.hameroff_benchmark import default_time_crystal_rows, default_trp_rows
 from orch_or.hameroff_benchmark import hameroff_benchmark_rows
@@ -44,7 +44,7 @@ GENERATED_STATISTICS = OUTPUT / "timing_statistics_table.csv"
 GENERATED_TIME_CRYSTAL = OUTPUT / "time_crystal_multiscale.csv"
 GENERATED_TRP = OUTPUT / "trp_superradiance_table.csv"
 GENERATED_HAMEROFF = OUTPUT / "hameroff_benchmark.csv"
-GENERATED_SUMMARY = OUTPUT / "haos_or_summary.json"
+GENERATED_SUMMARY = OUTPUT / "orch_or_summary.json"
 EXPECTED_TABLE = EXAMPLES / "expected_collapse_time_table.csv"
 EXPECTED_THRESHOLDS = EXAMPLES / "expected_dp_threshold_table.csv"
 EXPECTED_DECOHERENCE = EXAMPLES / "expected_decoherence_estimate_table.csv"
@@ -56,7 +56,7 @@ EXPECTED_STATISTICS = EXAMPLES / "expected_timing_statistics_table.csv"
 EXPECTED_TIME_CRYSTAL = EXAMPLES / "expected_time_crystal_multiscale.csv"
 EXPECTED_TRP = EXAMPLES / "expected_trp_superradiance_table.csv"
 EXPECTED_HAMEROFF = EXAMPLES / "expected_hameroff_benchmark.csv"
-EXPECTED_SUMMARY = EXAMPLES / "expected_haos_or_summary.json"
+EXPECTED_SUMMARY = EXAMPLES / "expected_orch_or_summary.json"
 
 
 def compare_exact(path: Path, expected_path: Path) -> bool:
