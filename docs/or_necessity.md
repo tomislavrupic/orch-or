@@ -10,6 +10,7 @@ Without Objective Reduction, the repo should not produce a finite gravity-collap
 
 `examples/or_off_comparison.py` writes `examples/output/or_off_comparison.csv`.
 `examples/reduction_events.py` writes `examples/output/reduction_events.csv`.
+`examples/reduction_sweep.py` writes `examples/output/reduction_sweep.csv`.
 
 Columns:
 
@@ -29,6 +30,7 @@ Interpretation:
 - This does not validate Orch-OR; it only shows the repo's collapse-time results are conditional on OR being present.
 
 The reduction artifact adds the next layer: a menu of alternatives, a selected state, and an event-time stamp produced when the menu is reduced.
+The reduction sweep adds the falsification layer: temperature and noise change the selected state, the threshold state, and the contrast with a classical reference state.
 
 ## Why This Matters
 

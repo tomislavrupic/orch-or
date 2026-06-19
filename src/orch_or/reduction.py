@@ -20,6 +20,8 @@ FIELDNAMES = [
     "alternative_set",
     "menu_size",
     "mass_distribution_label",
+    "orchestration_score",
+    "collective_threshold_state",
     "self_energy_j",
     "collapse_time_s",
     "decoherence_time_s",
@@ -29,6 +31,13 @@ FIELDNAMES = [
     "selection_rule",
     "gamma_link_hz",
     "decision_bias",
+    "predicted_timing_correlate",
+    "predicted_gamma_correlate",
+    "predicted_behavioral_correlate",
+    "classical_model_state",
+    "classical_model_gamma_link_hz",
+    "classical_model_decision_bias",
+    "novel_distinction",
     "source_ids",
     "note",
 ]
@@ -38,13 +47,17 @@ SWEEP_FIELDNAMES = [
     "temperature_K",
     "noise_scale",
     "menu_size",
+    "orchestration_score",
+    "collective_threshold_state",
     "self_energy_j",
     "collapse_time_s",
     "decoherence_time_s",
     "selection_margin_log10",
     "selected_state",
     "selection_rule",
+    "classical_model_state",
     "classical_distinguishability",
+    "novel_distinction",
     "source_ids",
     "note",
 ]
@@ -85,6 +98,15 @@ class ReductionScenario:
             raise ValueError("alternatives must not be empty")
 
 
+def collective_orchestration_score(alternatives: tuple[ReductionAlternative, ...]) -> float:
+    if not alternatives:
+        raise ValueError("alternatives must not be empty")
+    total_weight = sum(alt.weight for alt in alternatives)
+    gamma_term = sum(alt.gamma_link_hz for alt in alternatives) / (1.0 + len(alternatives))
+    bias_term = sum(alt.decision_bias for alt in alternatives)
+    return total_weight + gamma_term / 1.0e3 + bias_term
+
+
 def select_state(alternatives: tuple[ReductionAlternative, ...], selection_pressure: float) -> ReductionAlternative:
     if selection_pressure <= 0.0:
         raise ValueError("selection_pressure must be positive")
@@ -96,14 +118,30 @@ def select_state(alternatives: tuple[ReductionAlternative, ...], selection_press
     return scored[0]
 
 
+def classical_reference_state(alternatives: tuple[ReductionAlternative, ...]) -> ReductionAlternative:
+    return max(alternatives, key=lambda alt: (alt.weight, alt.gamma_link_hz))
+
+
 def reduction_event_row(scenario: ReductionScenario, selection_pressure: float = 1.0) -> dict[str, str]:
     tau_s = collapse_time_s(scenario.self_energy_j)
     selected = select_state(scenario.alternatives, selection_pressure)
+    classical = classical_reference_state(scenario.alternatives)
+    orchestration_score = collective_orchestration_score(scenario.alternatives)
+    collective_threshold_state = "orchestrated_threshold_crossed" if tau_s <= scenario.decoherence_time_s else "threshold_not_reached"
+    timing_correlate = "gamma_phase_lock" if selected.gamma_link_hz >= 60.0 else "subgamma_latency_shift"
+    gamma_correlate = "enhanced_gamma_link" if selected.gamma_link_hz >= classical.gamma_link_hz else "gamma_link_suppressed"
+    behavioral_correlate = "bias_toward_selected_state" if selected.decision_bias >= classical.decision_bias else "bias_shift_harder_to_classical"
+    novel_distinction = (
+        "OR predicts finite event_time plus menu selection under threshold crossing; "
+        "classical baseline keeps the menu but lacks threshold-locked reduction timing."
+    )
     return {
         "scenario": scenario.name,
         "alternative_set": ";".join(alt.label for alt in scenario.alternatives),
         "menu_size": str(len(scenario.alternatives)),
         "mass_distribution_label": scenario.mass_distribution_label,
+        "orchestration_score": format_float(orchestration_score),
+        "collective_threshold_state": collective_threshold_state,
         "self_energy_j": format_float(scenario.self_energy_j),
         "collapse_time_s": format_float(tau_s),
         "decoherence_time_s": format_float(scenario.decoherence_time_s),
@@ -113,6 +151,13 @@ def reduction_event_row(scenario: ReductionScenario, selection_pressure: float =
         "selection_rule": "max(weight * pressure + bias + gamma_link_hz / 1e3)",
         "gamma_link_hz": format_float(selected.gamma_link_hz),
         "decision_bias": format_float(selected.decision_bias),
+        "predicted_timing_correlate": timing_correlate,
+        "predicted_gamma_correlate": gamma_correlate,
+        "predicted_behavioral_correlate": behavioral_correlate,
+        "classical_model_state": classical.label,
+        "classical_model_gamma_link_hz": format_float(classical.gamma_link_hz),
+        "classical_model_decision_bias": format_float(classical.decision_bias),
+        "novel_distinction": novel_distinction,
         "source_ids": ";".join(scenario.source_ids),
         "note": scenario.note,
     }
@@ -144,20 +189,34 @@ def reduction_sweep_rows(
                 ) / noise_scale
                 tau_s = collapse_time_s(scenario.self_energy_j)
                 selected = select_state(scenario.alternatives, selection_pressure=noise_scale)
+                classical = classical_reference_state(scenario.alternatives)
                 rows.append(
                     {
                         "scenario": scenario.name,
                         "temperature_K": format_float(temperature_K),
                         "noise_scale": format_float(noise_scale),
                         "menu_size": str(len(scenario.alternatives)),
+                        "orchestration_score": format_float(
+                            collective_orchestration_score(scenario.alternatives)
+                        ),
+                        "collective_threshold_state": (
+                            "orchestrated_threshold_crossed"
+                            if tau_s <= decoherence_time_s
+                            else "threshold_not_reached"
+                        ),
                         "self_energy_j": format_float(scenario.self_energy_j),
                         "collapse_time_s": format_float(tau_s),
                         "decoherence_time_s": format_float(decoherence_time_s),
                         "selection_margin_log10": format_margin(math.log10(decoherence_time_s / tau_s)),
                         "selected_state": selected.label,
                         "selection_rule": "max(weight * pressure + bias + gamma_link_hz / 1e3)",
+                        "classical_model_state": classical.label,
                         "classical_distinguishability": format_margin(
                             abs(math.log10(decoherence_time_s / tau_s))
+                        ),
+                        "novel_distinction": (
+                            "OR changes finite event timing under threshold crossing; "
+                            "classical reference state stays tied to static weights only."
                         ),
                         "source_ids": ";".join(scenario.source_ids),
                         "note": scenario.note,

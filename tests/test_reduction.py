@@ -22,12 +22,17 @@ class ReductionTests(unittest.TestCase):
         self.assertGreater(float(row["collapse_time_s"]), 0.0)
         self.assertIn("state_alpha", row["alternative_set"])
         self.assertIn("gamma_link_hz", row)
+        self.assertIn("classical_model_state", row)
+        self.assertIn("novel_distinction", row)
+        self.assertIn("predicted_timing_correlate", row)
 
     def test_sweep_rows_change_with_noise(self) -> None:
         rows = reduction_sweep_rows(default_reduction_scenarios())
         self.assertGreater(len(rows), 0)
         self.assertTrue(all(row["selected_state"] for row in rows))
         self.assertTrue(any(row["selection_margin_log10"].startswith("-") for row in rows))
+        self.assertTrue(all(row["classical_model_state"] for row in rows))
+        self.assertTrue(any("classical" in row["novel_distinction"] for row in rows))
 
 
 if __name__ == "__main__":

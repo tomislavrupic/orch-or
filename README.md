@@ -56,6 +56,7 @@ PYTHONPATH=src python3 -m orch_or anesthesia --output examples/output/anesthesia
 python3 examples/protofilament_lattice_sweep.py
 python3 examples/hameroff_benchmark.py
 python3 examples/reduction_events.py
+python3 examples/reduction_sweep.py
 ```
 
 For editable install:

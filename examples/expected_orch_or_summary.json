@@ -11,6 +11,7 @@
     "or_decoherence_comparison_table": "or_decoherence_comparison.csv",
     "protofilament_lattice_table": "protofilament_lattice_sweep.csv",
     "reduction_events_table": "reduction_events.csv",
+    "reduction_sweep_table": "reduction_sweep.csv",
     "time_crystal_multiscale_table": "time_crystal_multiscale.csv",
     "timing_statistics_table": "timing_statistics_table.csv",
     "trp_superradiance_table": "trp_superradiance_table.csv"
