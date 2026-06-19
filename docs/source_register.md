@@ -45,7 +45,7 @@ Executable rows use source IDs rather than prose-only citations. Status labels d
 ## `microtubule_primary_trace_pending`
 
 - Status: `pending_primary_trace`
-- Source: Placeholder for primary structural review
+- Source: Primary structural review candidates include Nogales et al. 1998, Nogales et al. 1999, and Lowe et al. 2001
 - URL: not yet traced
 - Used for: eventual replacement of the secondary structural summary.
 - Boundary: Keep the current executable defaults bounded until this row is promoted.
