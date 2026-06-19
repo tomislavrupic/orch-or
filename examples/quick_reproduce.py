@@ -26,6 +26,8 @@ from orch_or.audit_summary import build_summary
 from orch_or.hameroff_benchmark import FIELDNAMES as HAMEROFF_FIELDNAMES
 from orch_or.hameroff_benchmark import default_time_crystal_rows, default_trp_rows
 from orch_or.hameroff_benchmark import hameroff_benchmark_rows
+from orch_or.reduction import FIELDNAMES as REDUCTION_FIELDNAMES
+from orch_or.reduction import default_reduction_scenarios, reduction_event_row, reduction_sweep_rows
 from orch_or.sweep import default_rows, write_rows
 from orch_or.thresholds import FIELDNAMES as THRESHOLD_FIELDNAMES
 from orch_or.thresholds import threshold_rows
@@ -48,6 +50,7 @@ GENERATED_STATISTICS = OUTPUT / "timing_statistics_table.csv"
 GENERATED_TIME_CRYSTAL = OUTPUT / "time_crystal_multiscale.csv"
 GENERATED_TRP = OUTPUT / "trp_superradiance_table.csv"
 GENERATED_HAMEROFF = OUTPUT / "hameroff_benchmark.csv"
+GENERATED_REDUCTION = OUTPUT / "reduction_events.csv"
 GENERATED_SUMMARY = OUTPUT / "orch_or_summary.json"
 EXPECTED_TABLE = EXAMPLES / "expected_collapse_time_table.csv"
 EXPECTED_THRESHOLDS = EXAMPLES / "expected_dp_threshold_table.csv"
@@ -61,6 +64,7 @@ EXPECTED_STATISTICS = EXAMPLES / "expected_timing_statistics_table.csv"
 EXPECTED_TIME_CRYSTAL = EXAMPLES / "expected_time_crystal_multiscale.csv"
 EXPECTED_TRP = EXAMPLES / "expected_trp_superradiance_table.csv"
 EXPECTED_HAMEROFF = EXAMPLES / "expected_hameroff_benchmark.csv"
+EXPECTED_REDUCTION = EXAMPLES / "expected_reduction_events.csv"
 EXPECTED_SUMMARY = EXAMPLES / "expected_orch_or_summary.json"
 
 
@@ -124,6 +128,8 @@ def main() -> int:
         trp_rows=trp_rows,
         anesthesia_rows=anesthesia_predictions,
     )
+    reduction_rows = [reduction_event_row(scenario) for scenario in default_reduction_scenarios()]
+    reduction_sweeps = reduction_sweep_rows(default_reduction_scenarios())
     write_rows(GENERATED_THRESHOLDS, dp_rows, THRESHOLD_FIELDNAMES)
     write_rows(GENERATED_DECOHERENCE, decoherence_estimates, DECOHERENCE_FIELDNAMES)
     write_rows(GENERATED_TEMPERATURE_SWEEP, temperature_sweep, TEMPERATURE_SWEEP_FIELDNAMES)
@@ -135,6 +141,7 @@ def main() -> int:
     write_rows(GENERATED_TIME_CRYSTAL, time_crystal_rows, TIME_CRYSTAL_FIELDNAMES)
     write_rows(GENERATED_TRP, trp_rows, TRP_FIELDNAMES)
     write_rows(GENERATED_HAMEROFF, hameroff_benchmark, HAMEROFF_FIELDNAMES)
+    write_rows(GENERATED_REDUCTION, reduction_rows, REDUCTION_FIELDNAMES)
 
     summary = build_summary(rows)
     summary["generated_at_utc"] = "FROZEN"
@@ -150,6 +157,7 @@ def main() -> int:
         "time_crystal_multiscale_table": GENERATED_TIME_CRYSTAL.name,
         "trp_superradiance_table": GENERATED_TRP.name,
         "hameroff_benchmark_table": GENERATED_HAMEROFF.name,
+        "reduction_events_table": GENERATED_REDUCTION.name,
     }
     summary["dp_threshold_rows"] = len(dp_rows)
     summary["decoherence_rows"] = len(decoherence_estimates)
@@ -162,6 +170,8 @@ def main() -> int:
     summary["time_crystal_rows"] = len(time_crystal_rows)
     summary["trp_rows"] = len(trp_rows)
     summary["hameroff_benchmark_rows"] = len(hameroff_benchmark)
+    summary["reduction_rows"] = len(reduction_rows)
+    summary["reduction_sweep_rows"] = len(reduction_sweeps)
     summary["coherence_fraction_grid"] = [1.0, 0.5, 0.1]
     summary["protofilament_count_grid"] = [1, 2, 3]
     summary["timing_statistics_spread"] = 0.25
@@ -179,6 +189,7 @@ def main() -> int:
     time_crystal_matches = compare_exact(GENERATED_TIME_CRYSTAL, EXPECTED_TIME_CRYSTAL)
     trp_matches = compare_exact(GENERATED_TRP, EXPECTED_TRP)
     hameroff_matches = compare_exact(GENERATED_HAMEROFF, EXPECTED_HAMEROFF)
+    reduction_matches = compare_exact(GENERATED_REDUCTION, EXPECTED_REDUCTION)
     summary_matches = compare_exact(GENERATED_SUMMARY, EXPECTED_SUMMARY)
     if (
         not table_matches
@@ -193,6 +204,7 @@ def main() -> int:
         or not time_crystal_matches
         or not trp_matches
         or not hameroff_matches
+        or not reduction_matches
         or not summary_matches
     ):
         raise SystemExit(
@@ -209,6 +221,7 @@ def main() -> int:
             f"time_crystal_matches={time_crystal_matches}\n"
             f"trp_matches={trp_matches}\n"
             f"hameroff_matches={hameroff_matches}\n"
+            f"reduction_matches={reduction_matches}\n"
             f"summary_matches={summary_matches}\n"
             f"generated_table={GENERATED_TABLE}\n"
             f"generated_thresholds={GENERATED_THRESHOLDS}\n"
@@ -219,6 +232,7 @@ def main() -> int:
             f"generated_comparison={GENERATED_COMPARISON}\n"
             f"generated_statistics={GENERATED_STATISTICS}\n"
             f"generated_hameroff={GENERATED_HAMEROFF}\n"
+            f"generated_reduction={GENERATED_REDUCTION}\n"
             f"generated_summary={GENERATED_SUMMARY}"
         )
 
@@ -235,11 +249,12 @@ def main() -> int:
     print(f"Time crystal sweep: {GENERATED_TIME_CRYSTAL}")
     print(f"Trp sweep: {GENERATED_TRP}")
     print(f"Hameroff benchmark: {GENERATED_HAMEROFF}")
+    print(f"Reduction events: {GENERATED_REDUCTION}")
     print(f"Summary: {GENERATED_SUMMARY}")
     print(
         "Statement: tau=hbar/E_G timing diagnostics, DP threshold sensitivity, "
         "decoherence windows, geometry sweeps, protofilament lattice sweeps, OR/decoherence comparison, timing statistics, anesthesia perturbation predictions, "
-        "and Hameroff-facing benchmark summaries reproduce. "
+        "Hameroff-facing benchmark summaries, and discrete reduction events reproduce. "
         "No biological, consciousness, or ontology claim is introduced."
     )
     return 0

@@ -9,6 +9,7 @@ Without Objective Reduction, the repo should not produce a finite gravity-collap
 ## Comparison Artifact
 
 `examples/or_off_comparison.py` writes `examples/output/or_off_comparison.csv`.
+`examples/reduction_events.py` writes `examples/output/reduction_events.csv`.
 
 Columns:
 
@@ -26,6 +27,8 @@ Interpretation:
 - `or_on_tau_s` is finite by construction from the DP timing relation.
 - `or_off_tau_s` is `inf` because the collapse window is removed.
 - This does not validate Orch-OR; it only shows the repo's collapse-time results are conditional on OR being present.
+
+The reduction artifact adds the next layer: a menu of alternatives, a selected state, and an event-time stamp produced when the menu is reduced.
 
 ## Why This Matters
 
