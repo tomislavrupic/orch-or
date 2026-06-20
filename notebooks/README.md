@@ -32,6 +32,11 @@ Executable notebook path:
    - surface the registry-backed literature layer
    - leave a lane for compact HTML-style summary plots and release checks
 
+7. `06_literature_comparison.ipynb`
+   - compare primary structure rows against frozen reduction artifacts
+   - plot simple source-backed summaries with matplotlib
+   - keep the narrative boundary explicit
+
 Comparison note:
 - `docs/published_values.md`
   - summarizes how the frozen outputs line up with the cited paper ranges

@@ -2,6 +2,7 @@
 
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 [![CI](https://github.com/tomislavrupic/orch-or/actions/workflows/ci.yml/badge.svg)](https://github.com/tomislavrupic/orch-or/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/tests-48%20passing-brightgreen)](tests/)
 [![License](https://img.shields.io/badge/license-noncommercial%20research-blue)](LICENSE)
 [![Repo](https://img.shields.io/badge/github-tomislavrupic%2Forch--or-181717?logo=github)](https://github.com/tomislavrupic/orch-or)
 

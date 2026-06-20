@@ -99,6 +99,13 @@ class LiteratureRegistry:
             row["source_short"] = self.sources.get(row["source_id"], LiteratureSource("unknown", "", "")).short
         return rows
 
+    def load_primary_structure(self) -> list[dict[str, str]]:
+        rows = _read_csv_rows(LITERATURE_ROOT / "primary_structure_rows.csv")
+        _require_columns(rows, ("parameter", "value", "uncertainty", "unit", "source_id", "notes"), LITERATURE_ROOT / "primary_structure_rows.csv")
+        for row in rows:
+            row["source_short"] = self.sources.get(row["source_id"], LiteratureSource("unknown", "", "")).short
+        return rows
+
     def get_geometry_param(self, param_name: str) -> float:
         for row in self.load_tubulin_geometry():
             if row["parameter"] == param_name:
@@ -110,6 +117,7 @@ class LiteratureRegistry:
         self.load_resonance_frequencies()
         self.load_decoherence()
         self.load_anesthesia()
+        self.load_primary_structure()
 
 
 registry = LiteratureRegistry()

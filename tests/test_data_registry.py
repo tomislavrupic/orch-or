@@ -14,6 +14,12 @@ class DataRegistryTests(unittest.TestCase):
         self.assertTrue(all("source_short" in row for row in rows))
         self.assertTrue(any(row["source_short"] == "Nogales et al. 1999" for row in rows))
 
+    def test_primary_structure_rows_are_loaded(self) -> None:
+        rows = registry.load_primary_structure()
+        self.assertEqual(len(rows), 5)
+        self.assertTrue(all("source_short" in row for row in rows))
+        self.assertTrue(any(row["source_short"] == "Lowe et al. 2001" for row in rows))
+
 
 if __name__ == "__main__":
     unittest.main()

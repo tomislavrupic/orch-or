@@ -1,0 +1,6 @@
+parameter,value,uncertainty,unit,source_id,notes
+microtubule_outer_diameter,25.0,1.0,nm,Nogales1999,Canonical outer diameter of a microtubule cylinder.
+microtubule_inner_diameter,15.0,1.0,nm,Nogales1999,Canonical lumen diameter of a microtubule cylinder.
+protofilament_count,13,0,,Nogales1999,Canonical protofilament count used in the executable geometry defaults.
+tubulin_dimer_length,8.0,0.2,nm,Lowe2001,Alpha-beta tubulin dimer length.
+tubulin_structure_resolution,3.5,0.1,angstrom,Lowe2001,Refined tubulin coordinate resolution from the primary structural model.
