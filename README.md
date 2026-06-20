@@ -1,13 +1,23 @@
 # Orch-OR
 
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
+[![CI](https://github.com/tomislavrupic/orch-or/actions/workflows/ci.yml/badge.svg)](https://github.com/tomislavrupic/orch-or/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-noncommercial%20research-blue)](LICENSE)
 [![Repo](https://img.shields.io/badge/github-tomislavrupic%2Forch--or-181717?logo=github)](https://github.com/tomislavrupic/orch-or)
 
-**Orch-OR diagnostic bridge for recoverability audits.**
+**Executable, source-traced diagnostics for Orch-OR timing, decoherence, and perturbations.**
+
+No solved-consciousness claims. Just auditable math.
 
 This repo is a bounded computational scaffold for Orch-OR-adjacent timing, decoherence, and perturbation checks. It does not claim that Orch-OR is true, that consciousness is solved, or that toy microtubule models are biologically sufficient.
 
 Layer used: Orch-OR diagnostic only.
+
+## Why This Repo?
+
+- Reproducible in one command with `python3 examples/quick_reproduce.py`
+- Every number has a traceable source via `LiteratureRegistry`
+- Explicit claim boundaries: toy, mixed, critical, supportive, and model assumptions
 
 ## Scope
 
@@ -125,6 +135,10 @@ Before any public scientific statement:
 
 ![The Quantum Bioserver preview](images/The_Quantum_Bioserver_preview.png)
 
+## Repo Thumbnail
+
+Use [images/The_Quantum_Bioserver_preview.png](images/The_Quantum_Bioserver_preview.png) as the social preview image so the repository front page shows the figure immediately.
+
 ## Minimal Orch-OR Audit
 
 Claim or task:
@@ -141,3 +155,13 @@ The code produces deterministic tables, and the interpretation remains bounded w
 
 Minimal next step:
 Replace the secondary microtubule structural source with primary structural references and add one independently checked anesthesia experiment row.
+
+## Contributing
+
+If you want to add a literature row, keep it source-locked:
+
+1. Add the source to `data/literature/sources.json`.
+2. Add the row to the relevant CSV in `data/literature/`.
+3. Add or update a loader in `src/orch_or/data.py`.
+4. Add a test in `tests/` that exercises the loader or derived diagnostic.
+5. Run `python3 examples/quick_reproduce.py` before opening a PR.
