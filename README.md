@@ -1,6 +1,6 @@
 # Orch-OR
 
-![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 [![CI](https://github.com/tomislavrupic/orch-or/actions/workflows/ci.yml/badge.svg)](https://github.com/tomislavrupic/orch-or/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-noncommercial%20research-blue)](LICENSE)
 [![Repo](https://img.shields.io/badge/github-tomislavrupic%2Forch--or-181717?logo=github)](https://github.com/tomislavrupic/orch-or)
@@ -143,6 +143,10 @@ Before any public scientific statement:
 
 Use [images/The_Quantum_Bioserver_preview.png](images/The_Quantum_Bioserver_preview.png) as the social preview image so the repository front page shows the figure immediately.
 
+## Dashboard Snapshot
+
+Run [notebooks/04_full_audit_dashboard.ipynb](notebooks/04_full_audit_dashboard.ipynb) for the current registry-backed audit skeleton. It executes the frozen spine, validates the literature registry, and leaves the visual comparison layer ready for plots.
+
 ## Minimal Orch-OR Audit
 
 Claim or task:
@@ -169,3 +173,8 @@ If you want to add a literature row, keep it source-locked:
 3. Add or update a loader in `src/orch_or/data.py`.
 4. Add a test in `tests/` that exercises the loader or derived diagnostic.
 5. Run `python3 examples/quick_reproduce.py` before opening a PR.
+
+## Release Anchors
+
+- [release_assets_v0.1.txt](release_assets_v0.1.txt): the frozen CSV/JSON/notebook bundle to attach to the first GitHub Release.
+- `v0.1.0`: the current local tag for the release-ready state.
