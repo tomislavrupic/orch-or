@@ -27,6 +27,11 @@ Executable notebook path:
    - track bounded quantum-yield, superradiant gain, and anesthetic damping proxies
    - keep the source placeholders explicit until the primary citations are locked
 
+6. `04_full_audit_dashboard.ipynb`
+   - run the full frozen reproduction spine
+   - surface the registry-backed literature layer
+   - leave a lane for compact HTML-style summary plots and release checks
+
 Comparison note:
 - `docs/published_values.md`
   - summarizes how the frozen outputs line up with the cited paper ranges

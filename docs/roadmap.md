@@ -13,12 +13,14 @@ This roadmap keeps the repo small, public, and falsifiable.
 7. Add the time-crystal / multiscale oscillation notebook and keep the Hameroff/Bandyopadhyay source placeholders explicit until the primary citations are locked.
 8. Add the Trp superradiance / optical channel notebook and keep the Babcock/Kurian and photoprotection source trail explicit.
 9. Keep `hameroff_benchmark.csv` in the one-command reproduction as a bounded index over time-crystal, Trp, and anesthesia-facing diagnostics.
+10. Publish the first GitHub Release from `release_assets_v0.1.txt` and attach the frozen CSV/JSON/notebook bundle.
 
 ## Next
 
 1. Split source rows into `supported`, `contested`, and `model_assumption` sections in the README.
 2. Add a short comparison note for Tegmark, Hagan/Hameroff/Tuszyński, and DP on the same page.
 3. Add one conservative “unknown / not yet traced” column to the roadmap table.
+4. Add a lightweight HTML export target for `notebooks/04_full_audit_dashboard.ipynb`.
 
 ## Later
 
