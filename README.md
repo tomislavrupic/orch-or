@@ -126,6 +126,7 @@ Before any public scientific statement:
 - [docs/published_values.md](docs/published_values.md): compact comparison against published values and ranges.
 - [docs/orch_or_audit_contract.md](docs/orch_or_audit_contract.md): Orch-OR audit artifact contract.
 - [docs/roadmap.md](docs/roadmap.md): short next-step roadmap for the repo.
+- [docs/publishing.md](docs/publishing.md): release and social-preview checklist.
 - [CONTRIBUTING.md](CONTRIBUTING.md): how to add a source-traced row or perturbation.
 - [CHANGELOG.md](CHANGELOG.md): release-oriented summary of the current public state.
 - [RELEASE_v0.1.md](RELEASE_v0.1.md): release notes and asset checklist for the first tagged release.
