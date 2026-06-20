@@ -125,6 +125,10 @@ Before any public scientific statement:
 - [docs/or_necessity.md](docs/or_necessity.md): the OR-on versus OR-off comparison artifact.
 - [docs/published_values.md](docs/published_values.md): compact comparison against published values and ranges.
 - [docs/orch_or_audit_contract.md](docs/orch_or_audit_contract.md): Orch-OR audit artifact contract.
+- [docs/roadmap.md](docs/roadmap.md): short next-step roadmap for the repo.
+- [CONTRIBUTING.md](CONTRIBUTING.md): how to add a source-traced row or perturbation.
+- [CHANGELOG.md](CHANGELOG.md): release-oriented summary of the current public state.
+- [RELEASE_v0.1.md](RELEASE_v0.1.md): release notes and asset checklist for the first tagged release.
 - [notebooks/01_dp_thresholds.ipynb](notebooks/01_dp_thresholds.ipynb): threshold table walkthrough.
 - [notebooks/02_decoherence_anesthesia.ipynb](notebooks/02_decoherence_anesthesia.ipynb): decoherence and anesthesia prediction walkthrough.
 - [notebooks/03_microtubule_geometry.ipynb](notebooks/03_microtubule_geometry.ipynb): geometry and `E_G` model comparison walkthrough.
